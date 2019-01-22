@@ -14,6 +14,12 @@
 		ED3D390621F18F5800C68323 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3D390421F18F5800C68323 /* LaunchScreen.storyboard */; };
 		ED3D391121F18F5900C68323 /* Tippin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D391021F18F5900C68323 /* Tippin_Tests.swift */; };
 		ED3D391C21F18F5900C68323 /* Tippin_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D391B21F18F5900C68323 /* Tippin_UITests.swift */; };
+		ED3D392B21F196D100C68323 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D392A21F196C600C68323 /* Lato-Light.ttf */; };
+		ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D392C21F1A7CE00C68323 /* Tip.swift */; };
+		ED3D393021F265EC00C68323 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D392F21F265EC00C68323 /* BackgroundView.swift */; };
+		ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393421F421E100C68323 /* AboutTableViewController.swift */; };
+		ED3D393821F424F900C68323 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393721F424F900C68323 /* UIColors.swift */; };
+		ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D395721F5418800C68323 /* Lato-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,19 +40,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ED3D38F821F18F5700C68323 /* Tippin'.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tippin'.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3D38F821F18F5700C68323 /* Tipie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3D38FB21F18F5700C68323 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED3D38FD21F18F5700C68323 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED3D390021F18F5700C68323 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED3D390221F18F5800C68323 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED3D390521F18F5800C68323 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3D390721F18F5800C68323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED3D390C21F18F5900C68323 /* Tippin'Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tippin'Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3D390C21F18F5900C68323 /* TipieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3D391021F18F5900C68323 /* Tippin_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tippin_Tests.swift; sourceTree = "<group>"; };
 		ED3D391221F18F5900C68323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED3D391721F18F5900C68323 /* Tippin'UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tippin'UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED3D391721F18F5900C68323 /* TipieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3D391B21F18F5900C68323 /* Tippin_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tippin_UITests.swift; sourceTree = "<group>"; };
 		ED3D391D21F18F5900C68323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED3D392A21F196C600C68323 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		ED3D392C21F1A7CE00C68323 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		ED3D392F21F265EC00C68323 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		ED3D393421F421E100C68323 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		ED3D393721F424F900C68323 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
+		ED3D395721F5418800C68323 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +89,7 @@
 		ED3D38EF21F18F5700C68323 = {
 			isa = PBXGroup;
 			children = (
-				ED3D38FA21F18F5700C68323 /* Tippin' */,
+				ED3D38FA21F18F5700C68323 /* Tipie */,
 				ED3D390F21F18F5900C68323 /* Tippin'Tests */,
 				ED3D391A21F18F5900C68323 /* Tippin'UITests */,
 				ED3D38F921F18F5700C68323 /* Products */,
@@ -87,24 +99,29 @@
 		ED3D38F921F18F5700C68323 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED3D38F821F18F5700C68323 /* Tippin'.app */,
-				ED3D390C21F18F5900C68323 /* Tippin'Tests.xctest */,
-				ED3D391721F18F5900C68323 /* Tippin'UITests.xctest */,
+				ED3D38F821F18F5700C68323 /* Tipie.app */,
+				ED3D390C21F18F5900C68323 /* TipieTests.xctest */,
+				ED3D391721F18F5900C68323 /* TipieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED3D38FA21F18F5700C68323 /* Tippin' */ = {
+		ED3D38FA21F18F5700C68323 /* Tipie */ = {
 			isa = PBXGroup;
 			children = (
 				ED3D38FB21F18F5700C68323 /* AppDelegate.swift */,
 				ED3D38FD21F18F5700C68323 /* ViewController.swift */,
+				ED3D393121F4190100C68323 /* Controllers */,
+				ED3D392E21F265D300C68323 /* Slider */,
+				ED3D392C21F1A7CE00C68323 /* Tip.swift */,
+				ED3D393621F424D800C68323 /* Helpers */,
 				ED3D38FF21F18F5700C68323 /* Main.storyboard */,
 				ED3D390221F18F5800C68323 /* Assets.xcassets */,
 				ED3D390421F18F5800C68323 /* LaunchScreen.storyboard */,
 				ED3D390721F18F5800C68323 /* Info.plist */,
+				ED3D392921F196B600C68323 /* Fonts */,
 			);
-			path = "Tippin'";
+			path = Tipie;
 			sourceTree = "<group>";
 		};
 		ED3D390F21F18F5900C68323 /* Tippin'Tests */ = {
@@ -125,12 +142,45 @@
 			path = "Tippin'UITests";
 			sourceTree = "<group>";
 		};
+		ED3D392921F196B600C68323 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D395721F5418800C68323 /* Lato-Semibold.ttf */,
+				ED3D392A21F196C600C68323 /* Lato-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ED3D392E21F265D300C68323 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D392F21F265EC00C68323 /* BackgroundView.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
+		ED3D393121F4190100C68323 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D393421F421E100C68323 /* AboutTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ED3D393621F424D800C68323 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D393721F424F900C68323 /* UIColors.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED3D38F721F18F5700C68323 /* Tippin' */ = {
+		ED3D38F721F18F5700C68323 /* Tipie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED3D392021F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'" */;
+			buildConfigurationList = ED3D392021F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tipie" */;
 			buildPhases = (
 				ED3D38F421F18F5700C68323 /* Sources */,
 				ED3D38F521F18F5700C68323 /* Frameworks */,
@@ -140,14 +190,14 @@
 			);
 			dependencies = (
 			);
-			name = "Tippin'";
+			name = Tipie;
 			productName = "Tippin'";
-			productReference = ED3D38F821F18F5700C68323 /* Tippin'.app */;
+			productReference = ED3D38F821F18F5700C68323 /* Tipie.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ED3D390B21F18F5900C68323 /* Tippin'Tests */ = {
+		ED3D390B21F18F5900C68323 /* TipieTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED3D392321F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'Tests" */;
+			buildConfigurationList = ED3D392321F18F5900C68323 /* Build configuration list for PBXNativeTarget "TipieTests" */;
 			buildPhases = (
 				ED3D390821F18F5900C68323 /* Sources */,
 				ED3D390921F18F5900C68323 /* Frameworks */,
@@ -158,14 +208,14 @@
 			dependencies = (
 				ED3D390E21F18F5900C68323 /* PBXTargetDependency */,
 			);
-			name = "Tippin'Tests";
+			name = TipieTests;
 			productName = "Tippin'Tests";
-			productReference = ED3D390C21F18F5900C68323 /* Tippin'Tests.xctest */;
+			productReference = ED3D390C21F18F5900C68323 /* TipieTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ED3D391621F18F5900C68323 /* Tippin'UITests */ = {
+		ED3D391621F18F5900C68323 /* TipieUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED3D392621F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'UITests" */;
+			buildConfigurationList = ED3D392621F18F5900C68323 /* Build configuration list for PBXNativeTarget "TipieUITests" */;
 			buildPhases = (
 				ED3D391321F18F5900C68323 /* Sources */,
 				ED3D391421F18F5900C68323 /* Frameworks */,
@@ -176,9 +226,9 @@
 			dependencies = (
 				ED3D391921F18F5900C68323 /* PBXTargetDependency */,
 			);
-			name = "Tippin'UITests";
+			name = TipieUITests;
 			productName = "Tippin'UITests";
-			productReference = ED3D391721F18F5900C68323 /* Tippin'UITests.xctest */;
+			productReference = ED3D391721F18F5900C68323 /* TipieUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -204,7 +254,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ED3D38F321F18F5700C68323 /* Build configuration list for PBXProject "Tippin'" */;
+			buildConfigurationList = ED3D38F321F18F5700C68323 /* Build configuration list for PBXProject "Tipie" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -217,9 +267,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED3D38F721F18F5700C68323 /* Tippin' */,
-				ED3D390B21F18F5900C68323 /* Tippin'Tests */,
-				ED3D391621F18F5900C68323 /* Tippin'UITests */,
+				ED3D38F721F18F5700C68323 /* Tipie */,
+				ED3D390B21F18F5900C68323 /* TipieTests */,
+				ED3D391621F18F5900C68323 /* TipieUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */,
+				ED3D392B21F196D100C68323 /* Lato-Light.ttf in Resources */,
 				ED3D390621F18F5800C68323 /* LaunchScreen.storyboard in Resources */,
 				ED3D390321F18F5800C68323 /* Assets.xcassets in Resources */,
 				ED3D390121F18F5700C68323 /* Main.storyboard in Resources */,
@@ -256,8 +308,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */,
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
+				ED3D393021F265EC00C68323 /* BackgroundView.swift in Sources */,
 				ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */,
+				ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */,
+				ED3D393821F424F900C68323 /* UIColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,12 +338,12 @@
 /* Begin PBXTargetDependency section */
 		ED3D390E21F18F5900C68323 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED3D38F721F18F5700C68323 /* Tippin' */;
+			target = ED3D38F721F18F5700C68323 /* Tipie */;
 			targetProxy = ED3D390D21F18F5900C68323 /* PBXContainerItemProxy */;
 		};
 		ED3D391921F18F5900C68323 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED3D38F721F18F5700C68323 /* Tippin' */;
+			target = ED3D38F721F18F5700C68323 /* Tipie */;
 			targetProxy = ED3D391821F18F5900C68323 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -434,15 +490,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X752JDEFHP;
-				INFOPLIST_FILE = "Tippin'/Info.plist";
+				INFOPLIST_FILE = Tipie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ReactorApps.Tippin-";
+				PRODUCT_BUNDLE_IDENTIFIER = ReactorApps.Tipie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,15 +509,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X752JDEFHP;
-				INFOPLIST_FILE = "Tippin'/Info.plist";
+				INFOPLIST_FILE = Tipie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ReactorApps.Tippin-";
+				PRODUCT_BUNDLE_IDENTIFIER = ReactorApps.Tipie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -481,7 +539,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tippin'.app/Tippin'";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tipie.app/Tipie";
 			};
 			name = Debug;
 		};
@@ -502,7 +560,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tippin'.app/Tippin'";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tipie.app/Tipie";
 			};
 			name = Release;
 		};
@@ -549,7 +607,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED3D38F321F18F5700C68323 /* Build configuration list for PBXProject "Tippin'" */ = {
+		ED3D38F321F18F5700C68323 /* Build configuration list for PBXProject "Tipie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3D391E21F18F5900C68323 /* Debug */,
@@ -558,7 +616,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED3D392021F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'" */ = {
+		ED3D392021F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tipie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3D392121F18F5900C68323 /* Debug */,
@@ -567,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED3D392321F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'Tests" */ = {
+		ED3D392321F18F5900C68323 /* Build configuration list for PBXNativeTarget "TipieTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3D392421F18F5900C68323 /* Debug */,
@@ -576,7 +634,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED3D392621F18F5900C68323 /* Build configuration list for PBXNativeTarget "Tippin'UITests" */ = {
+		ED3D392621F18F5900C68323 /* Build configuration list for PBXNativeTarget "TipieUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3D392721F18F5900C68323 /* Debug */,
