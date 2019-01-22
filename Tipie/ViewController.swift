@@ -19,6 +19,8 @@ enum TipPercentage : Double {
 
 class ViewController: UIViewController {
     
+    var slider : Overlay?
+    
     // LABELS
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
@@ -220,10 +222,27 @@ class ViewController: UIViewController {
     }
     
   
-   
+  
     
     // MARK: - Slider Component
      func sliderCustomView() {
         
+        slider = Overlay(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
+        slider?.translatesAutoresizingMaskIntoConstraints = false
+        if let slider = slider {
+            view.addSubview(slider)
+            
+            // FIXME: - Fixing the view to end at the bottom of the total view bottom
+            slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+           
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            })
+            // end
+        }
     }
+    
+    
 }

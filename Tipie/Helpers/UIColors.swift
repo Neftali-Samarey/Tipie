@@ -25,6 +25,10 @@ extension UIColor {
     class func cleanIndigo()->UIColor {
         return UIColor(r: 75, g: 68, b: 108)
     }
+    
+    class func emeraldColor()->UIColor {
+        return UIColor(r: 46, g: 204, b: 113)
+    }
 
 
 }

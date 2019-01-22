@@ -20,6 +20,7 @@
 		ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393421F421E100C68323 /* AboutTableViewController.swift */; };
 		ED3D393821F424F900C68323 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393721F424F900C68323 /* UIColors.swift */; };
 		ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D395721F5418800C68323 /* Lato-Semibold.ttf */; };
+		EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE2855E21F6D5870051EDEA /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		ED3D393421F421E100C68323 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		ED3D393721F424F900C68323 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		ED3D395721F5418800C68323 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		EDE2855E21F6D5870051EDEA /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				ED3D392F21F265EC00C68323 /* BackgroundView.swift */,
+				EDE2855E21F6D5870051EDEA /* OverlayView.swift */,
 			);
 			path = Slider;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */,
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
+				EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */,
 				ED3D393021F265EC00C68323 /* BackgroundView.swift in Sources */,
 				ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */,
 				ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */,
