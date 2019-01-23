@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    var overlayTouchArea = UIView()
     
    // CONTROL COMPONENTS
     @IBOutlet weak var tipSegmentParentView: UIView!
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
     // FEEDBACK GENERATOR
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let clearedGenerator = UINotificationFeedbackGenerator()
+    var tapGestureRecorgnizer : UITapGestureRecognizer?
     
 
     // COMPUTING BASED ON INPUT
@@ -157,6 +159,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = attributes
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
+        self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func resetSegmentBarPosition() {
@@ -221,6 +224,8 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
   
   
     
@@ -231,7 +236,14 @@ class ViewController: UIViewController {
         slider?.translatesAutoresizingMaskIntoConstraints = false
         if let slider = slider {
             view.addSubview(slider)
+            view.addSubview(overlayTouchArea)
             
+            // Touch area
+            overlayTouchArea.backgroundColor = UIColor.clear
+            overlayTouchArea.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+            overlayTouchArea.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
+            invokeTouchArea()
             // FIXME: - Fixing the view to end at the bottom of the total view bottom
             slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
@@ -242,6 +254,47 @@ class ViewController: UIViewController {
             })
             // end
         }
+    }
+    
+    // Remove from the main view
+    @objc func slideViewDown() {
+        print("Called")
+        
+        if let slider = slider {
+            
+            // fijando constraints usando Snapkit
+//            slider.snp.remakeConstraints({ (make) in
+//                make.leading.equalTo(view.snp.leading)
+//                make.trailing.equalTo(view.snp.trailing)
+//                make.bottom.equalTo(UIScreen.main.bounds.height+UIScreen.main.bounds.height/3)
+//                make.height.equalTo(UIScreen.main.bounds.height/3)
+//            })
+            
+            
+            // MAK: - Computing the overall height of the main view to be dismissed
+            slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+           
+            UIView.animate(withDuration: 0.2, animations: {
+                // Slide the view down below the bottom anchor of the main view
+                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
+                self.view.layoutIfNeeded()
+            }, completion: { (s) in
+                slider.removeFromSuperview()
+                self.slider = nil
+            })
+            
+        }
+    }
+    
+    fileprivate func getHeight() -> CGFloat {
+        return UIScreen.main.bounds.height
+    }
+    
+    // MARK: - Overlay custom area
+    func invokeTouchArea() {
+        tapGestureRecorgnizer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
+        overlayTouchArea.addGestureRecognizer(tapGestureRecorgnizer!)
     }
     
     

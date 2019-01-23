@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class AboutTableViewController: UITableViewController {
+class AboutTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
    
 
@@ -34,6 +35,51 @@ class AboutTableViewController: UITableViewController {
     // MARK: - Controller Methods
     @IBAction func dismissAboutController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Index: \(indexPath.section)")
+        
+        switch indexPath.section {
+        case 0:
+            print("1st")
+        case 1:
+            print("2")
+        case 2:
+            print("2")
+        case 3:
+             sendEmail()
+        case 4:
+            shareTipie()
+        default:
+            print("None selected")
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    // MARK: - SEND EMAIL
+    func sendEmail() {
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["neftalisamarey@gmail.com"])
+            mail.setMessageBody("<p> </p>", isHTML: true)
+            
+            present(mail, animated: true, completion: nil)
+        } else {
+            // Fail alert
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - SHARE APP
+    func shareTipie() {
+        
     }
     
 }
