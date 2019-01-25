@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-protocol SliderPercentageInputDelegate {
-    // Required delegates to pass to the caller of this view
+let notificationKey = "TP18"
+
+protocol SliderPercentageInputDelegate: class {
+    func updateTipPercentage(currentPercentage: Double?)
 }
 
 class Overlay: UIView {
@@ -19,11 +21,18 @@ class Overlay: UIView {
     var percentageLabel = UILabel()
     var sliderObject = UISlider()
     
+    weak var delegate : SliderPercentageInputDelegate?
+  
+    
     var percentileValue = 0
+    var decimalValue : Float = 0.0
     
     override init(frame: CGRect) {
         
         super.init(frame: frame)
+        
+//         NotificationCenter.default.addObserver(self, selector: #selector(Overlay.userIsSliding(notification:)), name: NSNotification.Name(notificationKey), object: nil)
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.percentageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +80,8 @@ class Overlay: UIView {
         
         // Slider
         sliderObject.tintColor = UIColor.emeraldColor()
-        sliderObject.minimumValue = 0.0
-        sliderObject.maximumValue = 50.0
+        sliderObject.minimumValue = 1
+        sliderObject.maximumValue = 50
         
         sliderObject.addTarget(self, action: #selector(self.changedValue(_:)), for: .valueChanged)
         self.sliderObject.topAnchor.constraint(equalTo: percentageLabel.bottomAnchor, constant: 50).isActive = true
@@ -83,10 +92,21 @@ class Overlay: UIView {
     }
     
     @objc func changedValue(_ sender: UISlider) {
-        percentileValue = Int(sender.value)
+        percentileValue = Int(sender.value) // Int for label
+        decimalValue = Float(sender.value)  // Decimal
         UIView.animate(withDuration: 0.3) {
              self.percentageLabel.text = "\(self.percentileValue)" + "%"
+            
+             self.delegate?.updateTipPercentage(currentPercentage: Double(self.percentileValue))
         }
+        
+        print("Conversion: \(String(format:"%0.2f", decimalValue))")
+        // NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
     }
+    
+    
+//    @objc func userIsSliding(notification :NSNotification) {
+//        print("Sending value ..")
+//    }
     
 }

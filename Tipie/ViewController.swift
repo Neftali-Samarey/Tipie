@@ -17,7 +17,9 @@ enum TipPercentage : Double {
 }
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SliderPercentageInputDelegate {
+    
+    
     
     var slider : Overlay?
     
@@ -26,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     var overlayTouchArea = UIView()
+    @IBOutlet weak var totalParentView: UIView!
     
    // CONTROL COMPONENTS
     @IBOutlet weak var tipSegmentParentView: UIView!
@@ -156,11 +159,21 @@ class ViewController: UIViewController {
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
         ]
         
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(updateTipValue),
+//                                               name: NSNotification.Name(rawValue: notificationKey),
+//                                               object: nil)
+        
         navigationController?.navigationBar.titleTextAttributes = attributes
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    
+//    @objc func updateTipValue() {
+//        self.tipLabel.text = "Works"
+//    }
     
     func resetSegmentBarPosition() {
         UIView.animate(withDuration: 0.2) {
@@ -210,6 +223,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateTipPercentage(currentPercentage: Double?) {
+        
+        if let percentile = currentPercentage {
+            //self.tipLabel.text = "\(percentile)"
+           
+            
+        }
+    }
+    
     // MARK: - ANIMATION
     fileprivate func animateLabelsWith(tip: Double, total: Double) {
         
@@ -237,7 +259,7 @@ class ViewController: UIViewController {
         if let slider = slider {
             view.addSubview(slider)
             view.addSubview(overlayTouchArea)
-            
+            slider.delegate = self
             // Touch area
             overlayTouchArea.backgroundColor = UIColor.clear
             overlayTouchArea.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
@@ -262,15 +284,6 @@ class ViewController: UIViewController {
         
         if let slider = slider {
             
-            // fijando constraints usando Snapkit
-//            slider.snp.remakeConstraints({ (make) in
-//                make.leading.equalTo(view.snp.leading)
-//                make.trailing.equalTo(view.snp.trailing)
-//                make.bottom.equalTo(UIScreen.main.bounds.height+UIScreen.main.bounds.height/3)
-//                make.height.equalTo(UIScreen.main.bounds.height/3)
-//            })
-            
-            
             // MAK: - Computing the overall height of the main view to be dismissed
             slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
@@ -281,15 +294,14 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }, completion: { (s) in
                 slider.removeFromSuperview()
+                self.overlayTouchArea.removeFromSuperview()
                 self.slider = nil
+          
             })
             
         }
     }
     
-    fileprivate func getHeight() -> CGFloat {
-        return UIScreen.main.bounds.height
-    }
     
     // MARK: - Overlay custom area
     func invokeTouchArea() {
