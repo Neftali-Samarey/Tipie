@@ -12,7 +12,7 @@ import UIKit
 let notificationKey = "TP18"
 
 protocol SliderPercentageInputDelegate: class {
-    func updateTipPercentage(currentPercentage: Double?)
+    func updateTipPercentage(currentPercentage: Float?)
 }
 
 class Overlay: UIView {
@@ -24,7 +24,7 @@ class Overlay: UIView {
     weak var delegate : SliderPercentageInputDelegate?
   
     
-    var percentileValue = 0
+    var percentileValue : Double = 0
     var decimalValue : Float = 0.0
     
     override init(frame: CGRect) {
@@ -42,8 +42,8 @@ class Overlay: UIView {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 15
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowOffset = CGSize(width: 0, height: -8)
         
         self.addSubview(titleLabel)
         self.addSubview(percentageLabel)
@@ -80,8 +80,8 @@ class Overlay: UIView {
         
         // Slider
         sliderObject.tintColor = UIColor.emeraldColor()
-        sliderObject.minimumValue = 1
-        sliderObject.maximumValue = 50
+        sliderObject.minimumValue = 0.0
+        sliderObject.maximumValue = 0.5
         
         sliderObject.addTarget(self, action: #selector(self.changedValue(_:)), for: .valueChanged)
         self.sliderObject.topAnchor.constraint(equalTo: percentageLabel.bottomAnchor, constant: 50).isActive = true
@@ -92,21 +92,31 @@ class Overlay: UIView {
     }
     
     @objc func changedValue(_ sender: UISlider) {
-        percentileValue = Int(sender.value) // Int for label
-        decimalValue = Float(sender.value)  // Decimal
+        
+        //percentileValue = Int(sender.value) // Int for label
+        
+        print(String(format: "%0.2f", sender.value))
+        
+        let fractionalPart = sender.value.truncatingRemainder(dividingBy: 1.0)
+        let modifiedFractionalPart = Int(fractionalPart * 100.0)
+        let resString = String(modifiedFractionalPart)
+        
+        // convert the string to percentage
+        print("Res: \(resString)")
+        
+     
+        
+        // Animator for the current value
         UIView.animate(withDuration: 0.3) {
-             self.percentageLabel.text = "\(self.percentileValue)" + "%"
-            
-             self.delegate?.updateTipPercentage(currentPercentage: Double(self.percentileValue))
+             self.percentageLabel.text = "\(modifiedFractionalPart)" + "%"
+            self.delegate?.updateTipPercentage(currentPercentage: sender.value)
         }
         
-        print("Conversion: \(String(format:"%0.2f", decimalValue))")
-        // NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
+    
+        
     }
     
     
-//    @objc func userIsSliding(notification :NSNotification) {
-//        print("Sending value ..")
-//    }
+
     
 }

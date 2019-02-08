@@ -10,12 +10,11 @@
 
 import UIKit
 
-enum TipPercentage : Double {
+enum TipPercentage : Float {
     case Fiften = 0.15
     case Twenty = 0.20
     case TwentyFive = 0.25
 }
-
 
 class ViewController: UIViewController, SliderPercentageInputDelegate {
     
@@ -39,9 +38,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
     let navigatorBar = UIView()
    
     // COMPUTING VARIABLE
-    var displayQuantity : Double = 0.0
-    var tip: Double = 0.0
-    var total: Double = 0.0
+    var displayQuantity : Float = 0.0
+    var tip: Float = 0.0
+    var total: Float = 0.0
     
     // FEEDBACK GENERATOR
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -53,18 +52,32 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
     @IBAction func actionKey(_ sender: UIButton) {
         
         selectedFeedbackGenerator.impactOccurred()
-        cleanSlate = false
-        self.tipSegmentControl.isEnabled = true
-  
-        //TODO: - IMPLEMENT THE CLEARING OF THE 0
-    
-        self.dueLabel.text! = self.dueLabel.text! + String(sender.tag-1)
-        displayQuantity = Double(self.dueLabel.text!)!
-            
-        // Set the base tip amount to 15%, then user selects from segment control any other value
-        tip = displayQuantity * TipPercentage.Fiften.rawValue
         
+        self.tipSegmentControl.isEnabled = true
+        
+        // remove the 0
+        if let slateClean = cleanSlate {
+            if slateClean == false {
+                self.dueLabel.text = ""
+            }
+        
+        }
+        
+        cleanSlate = true
+        
+        //TODO: - IMPLEMENT THE CLEARING OF THE 0 & TRUNCATE VALUE
+        self.dueLabel.text! = self.dueLabel.text! + String(sender.tag-1)
+        displayQuantity = Float(self.dueLabel.text!)!
+        
+        
+        print("Zero: \(displayQuantity)")
+       
+        tip = displayQuantity * TipPercentage.Fiften.rawValue
         total = displayQuantity + tip
+        
+        if let didCleanSlate = cleanSlate {
+            print("Resporting: \(didCleanSlate)")
+        }
         self.tipLabel.text = String(format: "$%0.2f",tip)
         self.totalLabel.text = String(format: "$%0.2f",total)
     
@@ -95,13 +108,13 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         
         self.tipSegmentControl.isEnabled = false
         self.decimalCounter = 0
-        self.displayQuantity = 0.0
-        self.tip = 0.0
-        self.total = 0.0
+        self.displayQuantity = 0
+        self.tip = 0
+        self.total = 0
         self.dueLabel.text = "0"
         self.tipLabel.text = "0"
         self.totalLabel.text = "0"
-        self.cleanSlate = true
+        self.cleanSlate = false
         self.tipSegmentControl.selectedSegmentIndex = 0
         resetSegmentBarPosition()
         clearedGenerator.notificationOccurred(.success)
@@ -138,7 +151,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
       
         navigatorBar.translatesAutoresizingMaskIntoConstraints = false
         self.tipSegmentParentView.addSubview(navigatorBar)
-        navigatorBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        navigatorBar.heightAnchor.constraint(equalToConstant: 4).isActive = true
         //navigatorBar.widthAnchor.constraint(equalTo: tipSegmentControl.widthAnchor, multiplier: 1 / CGFloat(tipSegmentControl.numberOfSegments)).isActive = true
         navigatorBar.widthAnchor.constraint(equalToConstant: self.tipSegmentParentView.bounds.width/4).isActive = true
         tipSegmentParentView.bottomAnchor.constraint(equalTo: navigatorBar.bottomAnchor).isActive = true
@@ -153,27 +166,20 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         super.viewDidLoad()
         
         self.title = "Tipie"
+        self.cleanSlate = false
         loadCustomSegmentControl()
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
         ]
         
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(updateTipValue),
-//                                               name: NSNotification.Name(rawValue: notificationKey),
-//                                               object: nil)
-        
+
         navigationController?.navigationBar.titleTextAttributes = attributes
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    
-//    @objc func updateTipValue() {
-//        self.tipLabel.text = "Works"
-//    }
     
     func resetSegmentBarPosition() {
         UIView.animate(withDuration: 0.2) {
@@ -215,7 +221,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
             self.animateLabelsWith(tip: tip, total: total)
 
         case 3:
-            // TODO: - Taking the custom value, and inserting it into the current accumulator
+        
             sliderCustomView()
             
         default:
@@ -223,29 +229,40 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         }
     }
     
-    func updateTipPercentage(currentPercentage: Double?) {
-        
+    // MARK: DELEGATE
+    func updateTipPercentage(currentPercentage: Float?) {
         if let percentile = currentPercentage {
-            //self.tipLabel.text = "\(percentile)"
-           
-            
+           let roundedValue = (percentile * 100).rounded() / 100
+            computeCustomTip(input: roundedValue)
         }
     }
+    
+    
+    // MARK: - SLIDER CALCULATION
+    func computeCustomTip(input: Float!)  {
+        print("Recieved: \(input!)")
+        tip = displayQuantity * Float(input)
+        total = displayQuantity + self.tip
+        animateLabelsWith(tip: tip, total: total) // pass by reference
+    }
+
     
     // MARK: - ANIMATION
-    fileprivate func animateLabelsWith(tip: Double, total: Double) {
+    fileprivate func animateLabelsWith(tip: Float, total: Float) {
         
-        self.tipLabel.alpha = 0
-        self.totalLabel.alpha = 0
+        let roundedValueTip = (tip * 100).rounded() / 100
+        let roundedTotal = (total * 100).rounded() / 100
+//        print("Tip: \(roundedValueTip)\n Total: \(roundedTotal)")
         UIView.animate(withDuration: 0.2) {
-            self.tipLabel.alpha = 1
-            self.totalLabel.alpha = 1
-            self.tipLabel.text = String(format: "$%0.2f",tip)
-            self.totalLabel.text = String(format: "$%0.2f",total)
+            
+            self.tipLabel.text = String(format: "$%0.2f", roundedValueTip)
+            self.totalLabel.text = String(format: "$%0.2f", roundedTotal)
         }
         
     }
     
+    
+   
     
     
   

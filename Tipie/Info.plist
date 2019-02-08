@@ -46,5 +46,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Share Tipie</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>ReactorApps.Tipie.share</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Share Tipie with friends</string>
+		</dict>
+	</array>
 </dict>
 </plist>
