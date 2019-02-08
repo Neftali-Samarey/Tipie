@@ -55,12 +55,11 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         
         self.tipSegmentControl.isEnabled = true
         
-        // remove the 0
+        // Remove the 0 during initial presentation
         if let slateClean = cleanSlate {
             if slateClean == false {
                 self.dueLabel.text = ""
             }
-        
         }
         
         cleanSlate = true
@@ -284,7 +283,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
             overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             invokeTouchArea()
             // FIXME: - Fixing the view to end at the bottom of the total view bottom
-            slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+           // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
             slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
            
@@ -302,7 +302,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         if let slider = slider {
             
             // MAK: - Computing the overall height of the main view to be dismissed
-            slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            //slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
            
             UIView.animate(withDuration: 0.2, animations: {
