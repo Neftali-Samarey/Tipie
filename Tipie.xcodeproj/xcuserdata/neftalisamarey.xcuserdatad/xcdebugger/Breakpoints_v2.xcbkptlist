@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tipie/ViewController.swift"
-            timestampString = "571294232.649127"
+            filePath = "Tipie/Slider/OverlayView.swift"
+            timestampString = "572941894.7366199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
-            landmarkName = "slideViewDown()"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "changedValue(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tipie/Slider/OverlayView.swift"
-            timestampString = "571283499.654099"
+            filePath = "Tipie/ViewController.swift"
+            timestampString = "572941894.736693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "changedValue(_:)"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "tipControl(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

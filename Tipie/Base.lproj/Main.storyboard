@@ -12,6 +12,9 @@
         <array key="Lato-Light.ttf">
             <string>Lato-Light</string>
         </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--About Table View Controller-->
@@ -238,18 +241,18 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="83.666666666666671"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Bill" translatesAutoresizingMaskIntoConstraints="NO" id="9Li-Tm-nMg">
-                                                                        <rect key="frame" x="8" y="22.999999999999996" width="35" height="35.666666666666657"/>
+                                                                        <rect key="frame" x="8" y="23" width="35" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4J-hQ-n1a">
-                                                                        <rect key="frame" x="50" y="29" width="78" height="23.666666666666671"/>
+                                                                        <rect key="frame" x="50" y="23" width="78" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WG-pR-R7k">
-                                                                        <rect key="frame" x="136" y="23" width="230" height="36"/>
+                                                                        <rect key="frame" x="128" y="23" width="238" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -264,7 +267,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9g-sm-hWg">
                                                                         <rect key="frame" x="51" y="29" width="78" height="24"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -304,7 +307,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-13-Kxa">
                                                                         <rect key="frame" x="51" y="23" width="78" height="36"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -336,7 +339,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.96754588429999999" green="0.96287174959999999" blue="0.97222001899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4jI-ii-PGt" secondAttribute="trailing" id="529-rX-2t9"/>
                                             <constraint firstItem="4jI-ii-PGt" firstAttribute="leading" secondItem="wcO-ra-rdo" secondAttribute="leading" id="9yA-Lq-S9M"/>
@@ -344,151 +347,175 @@
                                             <constraint firstItem="4jI-ii-PGt" firstAttribute="top" secondItem="wcO-ra-rdo" secondAttribute="top" id="DYe-cd-P2k"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qab-Pv-3eh">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6RX-tK-7fa">
                                         <rect key="frame" x="0.0" y="345" width="375" height="345"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-qb-Id0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="86.333333333333329"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qab-Pv-3eh">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="345"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn4-qg-sft">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="1">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7m-mB-6pQ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qu-Pm-9OQ">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="2">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0a-bK-A06"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epd-LK-trj">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="3">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dJX-yL-QgD"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="udY-Jy-rQO">
-                                                <rect key="frame" x="0.0" y="86.333333333333371" width="375" height="86.333333333333314"/>
-                                                <subviews>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrX-VC-1CA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="4">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hvU-PF-kVF"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxp-WC-068">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="5">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YAr-f6-ABU"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGd-tN-xFW">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="6">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="laL-QV-gBy"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KuQ-fS-raE">
-                                                <rect key="frame" x="0.0" y="172.66666666666663" width="375" height="86"/>
-                                                <subviews>
-                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2f-hx-4N8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="86"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="7">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VlA-rW-g0I"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-lr-V0W">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="86"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="8">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MPG-UD-SuD"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQJ-15-iXa">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="86"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="9">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mHn-mW-gTV"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-m3-1bp">
-                                                <rect key="frame" x="0.0" y="258.66666666666663" width="375" height="86.333333333333314"/>
-                                                <subviews>
-                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmi-tw-WFw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title=".">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="decimalInsertion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5qX-aD-r9r"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-bq-pn1">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="36"/>
-                                                        <state key="normal" title="0">
-                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b1n-qV-VJT"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L2-s9-WhO">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="32"/>
-                                                        <state key="normal" title="Clear">
-                                                            <color key="titleColor" red="0.98823529409999999" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="deleteEntry:" destination="BYZ-38-t0r" eventType="touchUpInside" id="25o-aZ-S3J"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-qb-Id0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="86.333333333333329"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn4-qg-sft">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="1">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7m-mB-6pQ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qu-Pm-9OQ">
+                                                                <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="2">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0a-bK-A06"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epd-LK-trj">
+                                                                <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="3">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dJX-yL-QgD"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="udY-Jy-rQO">
+                                                        <rect key="frame" x="0.0" y="86.333333333333371" width="375" height="86.333333333333314"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrX-VC-1CA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="4">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hvU-PF-kVF"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxp-WC-068">
+                                                                <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="5">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YAr-f6-ABU"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGd-tN-xFW">
+                                                                <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="6">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="laL-QV-gBy"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KuQ-fS-raE">
+                                                        <rect key="frame" x="0.0" y="172.66666666666663" width="375" height="86"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2f-hx-4N8">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="86"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="7">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VlA-rW-g0I"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-lr-V0W">
+                                                                <rect key="frame" x="125" y="0.0" width="125" height="86"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="8">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MPG-UD-SuD"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQJ-15-iXa">
+                                                                <rect key="frame" x="250" y="0.0" width="125" height="86"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="9">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mHn-mW-gTV"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bvX-m3-1bp">
+                                                        <rect key="frame" x="0.0" y="258.66666666666663" width="375" height="86.333333333333314"/>
+                                                        <subviews>
+                                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmi-tw-WFw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title=".">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="decimalInsertion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5qX-aD-r9r"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-bq-pn1">
+                                                                <rect key="frame" x="125" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="35"/>
+                                                                <state key="normal" title="0">
+                                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="actionKey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b1n-qV-VJT"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L2-s9-WhO">
+                                                                <rect key="frame" x="250" y="0.0" width="125" height="86.333333333333329"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="26"/>
+                                                                <state key="normal" title="Clear">
+                                                                    <color key="titleColor" red="0.98823529409999999" green="0.36078431370000003" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="deleteEntry:" destination="BYZ-38-t0r" eventType="touchUpInside" id="25o-aZ-S3J"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qab-Pv-3eh" secondAttribute="trailing" id="YTh-cF-GjB"/>
+                                            <constraint firstAttribute="bottom" secondItem="qab-Pv-3eh" secondAttribute="bottom" id="Ywf-2W-Ttx"/>
+                                            <constraint firstItem="qab-Pv-3eh" firstAttribute="top" secondItem="6RX-tK-7fa" secondAttribute="top" id="oRt-bl-CdB"/>
+                                            <constraint firstItem="qab-Pv-3eh" firstAttribute="leading" secondItem="6RX-tK-7fa" secondAttribute="leading" id="tT2-hX-EMk"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -508,14 +535,34 @@
                                 <segue destination="sHX-Yd-wqf" kind="presentation" id="zlU-of-dNJ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="SplitIcon" id="Myv-v1-Dpp">
+                            <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="splitBillView:" destination="BYZ-38-t0r" id="buu-Zf-7yi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dueLabel" destination="4WG-pR-R7k" id="t2f-VK-EEh"/>
+                        <outlet property="splitButton" destination="Myv-v1-Dpp" id="LXR-SR-yAL"/>
+                        <outlet property="splitButtonReference" destination="Myv-v1-Dpp" id="MFI-GF-cZ3"/>
                         <outlet property="tipLabel" destination="dOu-ai-50v" id="79C-Ph-OGw"/>
                         <outlet property="tipSegmentControl" destination="kN6-Ho-qdc" id="HdF-rI-fZG"/>
                         <outlet property="tipSegmentParentView" destination="3TR-Sb-kPb" id="dnx-3q-Rol"/>
                         <outlet property="totalLabel" destination="ksO-wT-HTt" id="BgV-Yl-LRR"/>
                         <outlet property="totalParentView" destination="A7O-hY-tp5" id="mSP-hJ-6BW"/>
+                        <outletCollection property="keyboardOutlets" destination="epd-LK-trj" collectionClass="NSMutableArray" id="z3M-VL-ELO"/>
+                        <outletCollection property="keyboardOutlets" destination="4Qu-Pm-9OQ" collectionClass="NSMutableArray" id="U9L-5h-mQi"/>
+                        <outletCollection property="keyboardOutlets" destination="Jn4-qg-sft" collectionClass="NSMutableArray" id="Uu5-2m-Wfq"/>
+                        <outletCollection property="keyboardOutlets" destination="xGd-tN-xFW" collectionClass="NSMutableArray" id="zjV-Ng-EL5"/>
+                        <outletCollection property="keyboardOutlets" destination="Oxp-WC-068" collectionClass="NSMutableArray" id="dv5-J1-C3k"/>
+                        <outletCollection property="keyboardOutlets" destination="HrX-VC-1CA" collectionClass="NSMutableArray" id="7Ix-sd-HTu"/>
+                        <outletCollection property="keyboardOutlets" destination="yQJ-15-iXa" collectionClass="NSMutableArray" id="u0s-Ll-Qd8"/>
+                        <outletCollection property="keyboardOutlets" destination="wy6-lr-V0W" collectionClass="NSMutableArray" id="1be-HP-bZz"/>
+                        <outletCollection property="keyboardOutlets" destination="A2f-hx-4N8" collectionClass="NSMutableArray" id="cvj-Tk-p3h"/>
+                        <outletCollection property="keyboardOutlets" destination="6L2-s9-WhO" collectionClass="NSMutableArray" id="gmG-3q-3T0"/>
+                        <outletCollection property="keyboardOutlets" destination="Ngt-bq-pn1" collectionClass="NSMutableArray" id="023-EH-Wcl"/>
+                        <outletCollection property="keyboardOutlets" destination="kmi-tw-WFw" collectionClass="NSMutableArray" id="97p-ND-VVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -564,6 +611,7 @@
         <image name="FeedbackIcon" width="180" height="180"/>
         <image name="RateApp" width="180" height="180"/>
         <image name="ShareIcon" width="180" height="180"/>
+        <image name="SplitIcon" width="24" height="24"/>
         <image name="Tip" width="180" height="180"/>
         <image name="Total" width="180" height="180"/>
         <image name="aboutIcon" width="341.33334350585938" height="341.33334350585938"/>

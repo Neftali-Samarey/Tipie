@@ -27,6 +27,19 @@
 		<string>Lato-Light.ttf</string>
 		<string>Lato-Semibold.ttf</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Share Tipie with friends</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Share Tipie</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.samarey.tipie.share</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,19 +58,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeShare</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Share Tipie</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>ReactorApps.Tipie.share</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>Share Tipie with friends</string>
-		</dict>
 	</array>
 </dict>
 </plist>

@@ -16,11 +16,11 @@ enum TipPercentage : Float {
     case TwentyFive = 0.25
 }
 
-class ViewController: UIViewController, SliderPercentageInputDelegate {
-    
-    
-    
-    var slider : Overlay?
+class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideThroughDelegate {
+   
+
+    var slider : Overlay? // deprecating
+    var typeSlider : Slider?
     
     // LABELS
     @IBOutlet weak var dueLabel: UILabel!
@@ -30,6 +30,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
     @IBOutlet weak var totalParentView: UIView!
     
    // CONTROL COMPONENTS
+    @IBOutlet weak var splitButtonReference: UIBarButtonItem!
+    @IBOutlet weak var splitButton: UIBarButtonItem!
     @IBOutlet weak var tipSegmentParentView: UIView!
     @IBOutlet weak var tipSegmentControl: UISegmentedControl!
     var cleanSlate : Bool?
@@ -41,19 +43,23 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
     var displayQuantity : Float = 0.0
     var tip: Float = 0.0
     var total: Float = 0.0
+    var recievingInputString = String()
     
     // FEEDBACK GENERATOR
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let clearedGenerator = UINotificationFeedbackGenerator()
     var tapGestureRecorgnizer : UITapGestureRecognizer?
     
-
+    @IBOutlet var keyboardOutlets: [UIButton]!
+    let relativeFontConstant : CGFloat = 0.046
+    
     // COMPUTING BASED ON INPUT
     @IBAction func actionKey(_ sender: UIButton) {
         
         selectedFeedbackGenerator.impactOccurred()
         
         self.tipSegmentControl.isEnabled = true
+        self.splitButton.isEnabled = true
         
         // Remove the 0 during initial presentation
         if let slateClean = cleanSlate {
@@ -64,10 +70,27 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         
         cleanSlate = true
         
-        //TODO: - IMPLEMENT THE CLEARING OF THE 0 & TRUNCATE VALUE
         self.dueLabel.text! = self.dueLabel.text! + String(sender.tag-1)
+        print("Label Test: \(String(describing: self.appendExtranousCharacter(label: dueLabel!)))") // test
         displayQuantity = Float(self.dueLabel.text!)!
         
+        //FIXME: - PROPOSED SOLUTION
+        /*
+         
+        self.recievingInputString = self.recievingInputString + String(sender.tag-1)
+        displayQuantity = Float(self.recievingInputString)!
+        print("Display QTY: \(displayQuantity)")
+ 
+        */
+     
+        
+        // Hiding this label
+//        self.dueLabel.isHidden = true
+        
+        // Set the dynamic label in place
+//        let defLabel = appendExtranousCharacter(label: dueLabel!)
+//        defLabel.frame = CGRect(x: 10, y: 10, width: 320, height: 30)
+//       self.totalParentView.addSubview(defLabel)
         
         print("Zero: \(displayQuantity)")
        
@@ -77,10 +100,21 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         if let didCleanSlate = cleanSlate {
             print("Resporting: \(didCleanSlate)")
         }
+       
         self.tipLabel.text = String(format: "$%0.2f",tip)
         self.totalLabel.text = String(format: "$%0.2f",total)
-    
     }
+    
+    // MARK: - Helper function to convert the string to desired label
+    func appendExtranousCharacter(label: UILabel?) -> UILabel {
+        let modifiedLabel =  UILabel()
+        if let availableData = label {
+            modifiedLabel.text = "$\(String(describing: availableData.text!))"
+        }
+        return modifiedLabel
+    }
+    
+   
     
     
     // MARK: - DECIMAL INSERTION METHOD
@@ -95,7 +129,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         }
 
         if decimalCounter == 0 {
-             self.dueLabel.text = self.dueLabel.text! + decimalChar[sender.tag-1]!
+            self.dueLabel.text = self.dueLabel.text! + decimalChar[sender.tag-1]!
+           // self.recievingInputString = self.recievingInputString + decimalChar[sender.tag-1]! // MARK : - TEST (to be removed)
         }
         
         // Increment the counter
@@ -116,6 +151,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         self.cleanSlate = false
         self.tipSegmentControl.selectedSegmentIndex = 0
         resetSegmentBarPosition()
+        self.splitButton.isEnabled = false
         clearedGenerator.notificationOccurred(.success)
         
     }
@@ -166,7 +202,14 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
         
         self.title = "Tipie"
         self.cleanSlate = false
+        self.splitButton.isEnabled = false
         loadCustomSegmentControl()
+        
+        // Keyboard Inits
+        for buttonLabels in keyboardOutlets {
+         buttonLabels.titleLabel?.font = buttonLabels.titleLabel?.font.withSize(self.view.frame.height * relativeFontConstant)
+        }
+        
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
@@ -220,21 +263,40 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
             self.animateLabelsWith(tip: tip, total: total)
 
         case 3:
-        
-            sliderCustomView()
-            
+            slideCustomViewWithType(type: .Tip)
+           // sliderCustomView()
         default:
             print("No other selection made")
         }
     }
     
-    // MARK: DELEGATE
+ 
+    
+      // MARK: - SPLIT BILL
+    @IBAction func splitBillView(_ sender: Any) {
+        splitButtonReference.isEnabled = false
+        slideCustomViewWithType(type: .Split)
+    }
+    
+    // MARK: DELEGATES
     func updateTipPercentage(currentPercentage: Float?) {
         if let percentile = currentPercentage {
            let roundedValue = (percentile * 100).rounded() / 100
             computeCustomTip(input: roundedValue)
         }
     }
+    
+    // TODO: - NEW DELEGATES
+    func updateTipPercentageTo(currentPercentage: Float?) {
+        if let percentile = currentPercentage {
+            let roundedValue = (percentile * 100).rounded() / 100
+            computeCustomTip(input: roundedValue)
+        }
+    }
+    
+//    func updateNumberOfPeopleSplit() {
+//        print("Working on this")
+//    }
     
     
     // MARK: - SLIDER CALCULATION
@@ -268,11 +330,14 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
   
     
     // MARK: - Slider Component
-     func sliderCustomView() {
+    
+    func slideCustomViewWithType(type: SliderType) {
         
-        slider = Overlay(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
-        slider?.translatesAutoresizingMaskIntoConstraints = false
-        if let slider = slider {
+        typeSlider = Slider(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
+        
+        typeSlider?.translatesAutoresizingMaskIntoConstraints = false
+        if let slider = typeSlider {
+            slider.style(slidertype: type)
             view.addSubview(slider)
             view.addSubview(overlayTouchArea)
             slider.delegate = self
@@ -283,23 +348,51 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
             overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             invokeTouchArea()
             // FIXME: - Fixing the view to end at the bottom of the total view bottom
-           // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+            // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
             slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-           
+            
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.layoutIfNeeded()
             })
-            // end
+        
         }
     }
     
+    
+    
+//     func sliderCustomView() {
+//
+//        slider = Overlay(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
+//        slider?.translatesAutoresizingMaskIntoConstraints = false
+//        if let slider = slider {
+//            view.addSubview(slider)
+//            view.addSubview(overlayTouchArea)
+//            slider.delegate = self
+//            // Touch area
+//            overlayTouchArea.backgroundColor = UIColor.clear
+//            overlayTouchArea.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+//            overlayTouchArea.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+//            overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
+//            invokeTouchArea()
+//            // FIXME: - Fixing the view to end at the bottom of the total view bottom
+//           // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
+//            self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
+//            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+//            slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+//
+//            UIView.animate(withDuration: 0.2, animations: {
+//                self.view.layoutIfNeeded()
+//            })
+//            // end
+//        }
+//    }
+    
     // Remove from the main view
     @objc func slideViewDown() {
-        print("Called")
-        
-        if let slider = slider {
+
+        if let slider = typeSlider {
             
             // MAK: - Computing the overall height of the main view to be dismissed
             //slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
@@ -308,18 +401,18 @@ class ViewController: UIViewController, SliderPercentageInputDelegate {
            
             UIView.animate(withDuration: 0.2, animations: {
                 // Slide the view down below the bottom anchor of the main view
-                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
+                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.typeSlider!.frame.height/2)
                 self.view.layoutIfNeeded()
             }, completion: { (s) in
                 slider.removeFromSuperview()
                 self.overlayTouchArea.removeFromSuperview()
-                self.slider = nil
+                self.typeSlider = nil
           
             })
             
         }
+        splitButtonReference.isEnabled = true
     }
-    
     
     // MARK: - Overlay custom area
     func invokeTouchArea() {

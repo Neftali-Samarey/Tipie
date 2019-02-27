@@ -29,6 +29,14 @@ extension UIColor {
     class func emeraldColor()->UIColor {
         return UIColor(r: 46, g: 204, b: 113)
     }
+    
+    class func flatPink()->UIColor {
+        return UIColor(r: 255, g: 45, b: 85)
+    }
+    
+    class func flatPinkBackground()->UIColor {
+        return UIColor(r: 255, g: 241, b: 244)
+    }
 
 
 }

@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-let notificationKey = "TP18"
-
 protocol SliderPercentageInputDelegate: class {
     func updateTipPercentage(currentPercentage: Float?)
 }
