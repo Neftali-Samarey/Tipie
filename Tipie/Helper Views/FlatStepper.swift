@@ -15,7 +15,7 @@ class FlatStepper: UIView {
     private let middleLabel = UILabel()
     
     // Defaults to 0
-    public var value = 0 {
+    public var value = 1 {
         didSet {
             middleLabel.text = String(value)
         }
@@ -71,7 +71,7 @@ class FlatStepper: UIView {
     
     // Increments
     @objc private func leftButtonTouchDown(button: UIButton) {
-        guard value > 0 else {
+        guard value > 1 else {
             return
         }
         value -= 1

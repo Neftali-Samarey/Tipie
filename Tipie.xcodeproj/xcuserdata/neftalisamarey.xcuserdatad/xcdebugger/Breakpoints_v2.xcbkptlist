@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipie/Slider/OverlayView.swift"
-            timestampString = "572941894.7366199"
+            timestampString = "573146863.150849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipie/ViewController.swift"
-            timestampString = "572941894.736693"
+            timestampString = "573146863.15093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "tipControl(_:)"
             landmarkType = "7">
          </BreakpointContent>

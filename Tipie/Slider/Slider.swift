@@ -16,7 +16,7 @@ enum SliderType {
 
 protocol didSlideThroughDelegate: class {
     func updateTipPercentageTo(currentPercentage: Float?)
-    //func updateNumberOfPeopleSplit()
+    func updateNumberOfPeopleSplit(count: Int?)
 }
 
 
@@ -186,8 +186,6 @@ class Slider: UIView {
         // convert the string to percentage
         print("Res: \(resString)")
         
-        
-        
         // Animator for the current value
         UIView.animate(withDuration: 0.3) {
             self.percentageLabel.text = "\(modifiedFractionalPart)" + "%"
@@ -201,10 +199,12 @@ class Slider: UIView {
     // STEPPER
     @objc func decrementValue() {
         selectedFeedbackGenerator.impactOccurred()
+        self.delegate?.updateNumberOfPeopleSplit(count: numberOfPeopleStepper.value)
     }
     
     @objc func incrementValue() {
         selectedFeedbackGenerator.impactOccurred()
+        self.delegate?.updateNumberOfPeopleSplit(count: numberOfPeopleStepper.value)
     }
   
     

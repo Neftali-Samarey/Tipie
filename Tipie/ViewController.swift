@@ -18,26 +18,29 @@ enum TipPercentage : Float {
 
 class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideThroughDelegate {
    
-
-    var slider : Overlay? // deprecating
     var typeSlider : Slider?
     
     // LABELS
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    var overlayTouchArea = UIView()
+    
+    @IBOutlet weak var tipParentView: UIView!
     @IBOutlet weak var totalParentView: UIView!
+    
+   
     
    // CONTROL COMPONENTS
     @IBOutlet weak var splitButtonReference: UIBarButtonItem!
     @IBOutlet weak var splitButton: UIBarButtonItem!
     @IBOutlet weak var tipSegmentParentView: UIView!
     @IBOutlet weak var tipSegmentControl: UISegmentedControl!
+    
     var cleanSlate : Bool?
     var decimalCounter = 0
     var selectedIndex = 0
     let navigatorBar = UIView()
+    var overlayTouchArea = UIView()
    
     // COMPUTING VARIABLE
     var displayQuantity : Float = 0.0
@@ -52,6 +55,11 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     
     @IBOutlet var keyboardOutlets: [UIButton]!
     let relativeFontConstant : CGFloat = 0.046
+    
+    // CONSTRAINT REFERENCE VARIABLES
+    
+    @IBOutlet weak var yourTipValueLabel: UILabel!
+    @IBOutlet weak var yourTipLabel: UILabel!
     
     // COMPUTING BASED ON INPUT
     @IBAction func actionKey(_ sender: UIButton) {
@@ -204,6 +212,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         self.cleanSlate = false
         self.splitButton.isEnabled = false
         loadCustomSegmentControl()
+        hideSplitSublabels()
         
         // Keyboard Inits
         for buttonLabels in keyboardOutlets {
@@ -220,6 +229,11 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func hideSplitSublabels() {
+        yourTipValueLabel.isHidden = true
+        yourTipLabel.isHidden = true
     }
     
     
@@ -294,9 +308,39 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         }
     }
     
-//    func updateNumberOfPeopleSplit() {
-//        print("Working on this")
-//    }
+    //FIXME: - FIX THIS METHOD
+    // TODO: *******************    ROUND ALL INPUT NUMBERS *************************
+    func updateNumberOfPeopleSplit(count: Int?) {
+        let local_total = total
+        let local_tip = tip
+        if let amount = count {
+            // Compute the bill
+            if (amount > 1) {
+                // Half all constraints in the total and tip fields to fit 2 types of elements to be displayed
+                 print("Amount of people: \(amount), total: \(local_total), tip: \(local_tip)")
+                
+                UIView.animate(withDuration: 0.2) {
+                    self.yourTipLabel.isHidden = false
+                    self.yourTipValueLabel.isHidden = false
+                }
+                
+                yourTipValueLabel.text = "\(local_tip)"
+            } else if (amount == 1) {
+                // Close all halves of constrains to a single entity
+                // TODO: ANIMAYE THE VIEW BACK TO THE BOTTOM OF THE PARENT VIEW
+                UIView.animate(withDuration: 0.2) {
+                    self.yourTipValueLabel.isHidden = true
+                    self.yourTipLabel.isHidden = true
+                    DispatchQueue.main.async {
+                        self.tipLabel.topAnchor.constraint(equalTo: self.tipParentView.topAnchor, constant: 10).isActive = true
+                        self.tipLabel.topAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = true
+                        self.view.layoutIfNeeded()
+                    }
+                }
+                print("Closing autolayout")
+            }
+        }
+    }
     
     
     // MARK: - SLIDER CALCULATION

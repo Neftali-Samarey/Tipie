@@ -265,14 +265,21 @@
                                                                 <rect key="frame" x="0.0" y="84.666666666666657" width="375" height="83.333333333333343"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9g-sm-hWg">
-                                                                        <rect key="frame" x="51" y="29" width="78" height="24"/>
+                                                                        <rect key="frame" x="51" y="17" width="78" height="24"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOu-ai-50v">
-                                                                        <rect key="frame" x="136" y="24" width="230" height="35"/>
+                                                                        <rect key="frame" x="137" y="7" width="230" height="35"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
+                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGW-8t-bEu">
+                                                                        <rect key="frame" x="137" y="40" width="230" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -282,6 +289,13 @@
                                                                         <rect key="frame" x="8" y="23" width="35" height="36"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Y-CN-afU">
+                                                                        <rect key="frame" x="51" y="42" width="78" height="24"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
+                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
@@ -547,10 +561,13 @@
                         <outlet property="splitButton" destination="Myv-v1-Dpp" id="LXR-SR-yAL"/>
                         <outlet property="splitButtonReference" destination="Myv-v1-Dpp" id="MFI-GF-cZ3"/>
                         <outlet property="tipLabel" destination="dOu-ai-50v" id="79C-Ph-OGw"/>
+                        <outlet property="tipParentView" destination="N2H-lI-7lV" id="sVB-ki-xx2"/>
                         <outlet property="tipSegmentControl" destination="kN6-Ho-qdc" id="HdF-rI-fZG"/>
                         <outlet property="tipSegmentParentView" destination="3TR-Sb-kPb" id="dnx-3q-Rol"/>
                         <outlet property="totalLabel" destination="ksO-wT-HTt" id="BgV-Yl-LRR"/>
                         <outlet property="totalParentView" destination="A7O-hY-tp5" id="mSP-hJ-6BW"/>
+                        <outlet property="yourTipLabel" destination="w5Y-CN-afU" id="Asi-Hu-pAF"/>
+                        <outlet property="yourTipValueLabel" destination="bGW-8t-bEu" id="dcY-Yw-gT5"/>
                         <outletCollection property="keyboardOutlets" destination="epd-LK-trj" collectionClass="NSMutableArray" id="z3M-VL-ELO"/>
                         <outletCollection property="keyboardOutlets" destination="4Qu-Pm-9OQ" collectionClass="NSMutableArray" id="U9L-5h-mQi"/>
                         <outletCollection property="keyboardOutlets" destination="Jn4-qg-sft" collectionClass="NSMutableArray" id="Uu5-2m-Wfq"/>
