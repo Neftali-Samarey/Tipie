@@ -254,7 +254,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WG-pR-R7k">
                                                                         <rect key="frame" x="128" y="23" width="238" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="27"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -272,16 +272,16 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOu-ai-50v">
-                                                                        <rect key="frame" x="137" y="7" width="230" height="35"/>
+                                                                        <rect key="frame" x="137" y="6.9999999999999716" width="230" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="27"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGW-8t-bEu">
-                                                                        <rect key="frame" x="137" y="40" width="230" height="35"/>
+                                                                        <rect key="frame" x="137" y="39.999999999999972" width="230" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="27"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -289,7 +289,7 @@
                                                                         <rect key="frame" x="8" y="23" width="35" height="36"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Y-CN-afU">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Tip:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5Y-CN-afU">
                                                                         <rect key="frame" x="51" y="42" width="78" height="24"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="20"/>
@@ -314,7 +314,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksO-wT-HTt">
                                                                         <rect key="frame" x="137" y="23" width="230" height="35"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="29"/>
+                                                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="27"/>
                                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -560,10 +560,12 @@
                         <outlet property="dueLabel" destination="4WG-pR-R7k" id="t2f-VK-EEh"/>
                         <outlet property="splitButton" destination="Myv-v1-Dpp" id="LXR-SR-yAL"/>
                         <outlet property="splitButtonReference" destination="Myv-v1-Dpp" id="MFI-GF-cZ3"/>
+                        <outlet property="tipIconReference" destination="J4Q-AU-pJx" id="e87-C0-oVO"/>
                         <outlet property="tipLabel" destination="dOu-ai-50v" id="79C-Ph-OGw"/>
                         <outlet property="tipParentView" destination="N2H-lI-7lV" id="sVB-ki-xx2"/>
                         <outlet property="tipSegmentControl" destination="kN6-Ho-qdc" id="HdF-rI-fZG"/>
                         <outlet property="tipSegmentParentView" destination="3TR-Sb-kPb" id="dnx-3q-Rol"/>
+                        <outlet property="titledTipLabel" destination="n9g-sm-hWg" id="jwY-H6-eae"/>
                         <outlet property="totalLabel" destination="ksO-wT-HTt" id="BgV-Yl-LRR"/>
                         <outlet property="totalParentView" destination="A7O-hY-tp5" id="mSP-hJ-6BW"/>
                         <outlet property="yourTipLabel" destination="w5Y-CN-afU" id="Asi-Hu-pAF"/>

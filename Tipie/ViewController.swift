@@ -25,6 +25,12 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
+    // IMAGE REFERENCES
+    @IBOutlet weak var tipIconReference: UIImageView!
+    
+    // Dynamic labels
+    @IBOutlet weak var titledTipLabel: UILabel!
+    
     @IBOutlet weak var tipParentView: UIView!
     @IBOutlet weak var totalParentView: UIView!
     
@@ -41,12 +47,14 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     var selectedIndex = 0
     let navigatorBar = UIView()
     var overlayTouchArea = UIView()
+    var layoutInPlace = true
    
     // COMPUTING VARIABLE
     var displayQuantity : Float = 0.0
     var tip: Float = 0.0
     var total: Float = 0.0
     var recievingInputString = String()
+    
     
     // FEEDBACK GENERATOR
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -57,9 +65,10 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     let relativeFontConstant : CGFloat = 0.046
     
     // CONSTRAINT REFERENCE VARIABLES
-    
     @IBOutlet weak var yourTipValueLabel: UILabel!
     @IBOutlet weak var yourTipLabel: UILabel!
+    var bottomTipLabelConstrain : NSLayoutConstraint?
+    var bottomTitledTipLabelConstrain : NSLayoutConstraint?
     
     // COMPUTING BASED ON INPUT
     @IBAction func actionKey(_ sender: UIButton) {
@@ -105,9 +114,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         tip = displayQuantity * TipPercentage.Fiften.rawValue
         total = displayQuantity + tip
         
-        if let didCleanSlate = cleanSlate {
-            print("Resporting: \(didCleanSlate)")
-        }
+//        if let didCleanSlate = cleanSlate {
+//           // print("Resporting: \(didCleanSlate)")
+//        }
        
         self.tipLabel.text = String(format: "$%0.2f",tip)
         self.totalLabel.text = String(format: "$%0.2f",total)
@@ -161,7 +170,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         resetSegmentBarPosition()
         self.splitButton.isEnabled = false
         clearedGenerator.notificationOccurred(.success)
-        
+        //slideTipComponentsAway(sliderType: .Split)
     }
     
     
@@ -209,15 +218,25 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         super.viewDidLoad()
         
         self.title = "Tipie"
+        
         self.cleanSlate = false
         self.splitButton.isEnabled = false
         loadCustomSegmentControl()
         hideSplitSublabels()
-        
+       
+        iniiateConstraintReferences()
         // Keyboard Inits
         for buttonLabels in keyboardOutlets {
          buttonLabels.titleLabel?.font = buttonLabels.titleLabel?.font.withSize(self.view.frame.height * relativeFontConstant)
         }
+        
+        // Dynamic labels
+//        self.dueLabel.font = dueLabel.font.withSize(self.view.frame.height * relativeFontConstant)
+//        self.tipLabel.font = tipLabel.font.withSize(self.view.frame.height * relativeFontConstant)
+//        self.totalLabel.font = totalLabel.font.withSize(self.view.frame.height * relativeFontConstant)
+        
+        // Static labels
+       
         
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
@@ -229,11 +248,74 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
+        
+        //FIXME: REMOVE()
+       // layoutLabelBorderLines()
     }
     
     func hideSplitSublabels() {
         yourTipValueLabel.isHidden = true
         yourTipLabel.isHidden = true
+    }
+    
+    func iniiateConstraintReferences() {
+        // Set all init lables to false for the default constraints
+        tipIconReference.translatesAutoresizingMaskIntoConstraints = false
+        tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        titledTipLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        tipIconReference.contentMode = .scaleAspectFit
+      
+        
+        // Image constraint
+        tipIconReference.leadingAnchor.constraint(equalTo: self.tipParentView.leadingAnchor, constant: 8).isActive = true
+        tipIconReference.heightAnchor.constraint(equalToConstant: self.tipParentView.bounds.height - 45).isActive = true
+        tipIconReference.widthAnchor.constraint(equalToConstant: self.tipParentView.bounds.height - 45).isActive = true
+        tipIconReference.centerYAnchor.constraint(equalTo: self.tipParentView.centerYAnchor, constant: 0).isActive = true
+        
+        // Tip label (default dynamic label)
+        bottomTipLabelConstrain = tipLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10)
+        tipLabel.topAnchor.constraint(equalTo: self.tipParentView.topAnchor, constant: 10).isActive = true
+        tipLabel.trailingAnchor.constraint(equalTo: self.tipParentView.trailingAnchor, constant: -10).isActive = true
+        
+        // Tip label title only**
+        bottomTitledTipLabelConstrain = titledTipLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10)
+        titledTipLabel.topAnchor.constraint(equalTo: self.tipParentView.topAnchor, constant: 10).isActive = true
+        titledTipLabel.leadingAnchor.constraint(equalTo: self.tipIconReference.trailingAnchor, constant: 8).isActive = true
+        
+        // Constraints below are defined to work as normal constraints
+        tipLabel.leadingAnchor.constraint(equalTo: self.titledTipLabel.trailingAnchor, constant: 0).isActive = true
+        
+        bottomTipLabelConstrain?.isActive = true // Pins the tip label 10 points from the parent bottom
+        bottomTitledTipLabelConstrain?.isActive = true
+    }
+    
+    private func instantiateSubLabelConstraints(enableConstraints: Bool, count: Int) {
+        
+        yourTipLabel.translatesAutoresizingMaskIntoConstraints = false
+        yourTipValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        if (enableConstraints == true) {
+            DispatchQueue.main.async {
+                self.yourTipLabel.leadingAnchor.constraint(equalTo: self.tipIconReference.trailingAnchor, constant: 8).isActive = true
+                self.yourTipLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = true
+                self.yourTipLabel.topAnchor.constraint(equalTo: self.tipLabel.bottomAnchor, constant: 0).isActive = true
+                self.yourTipValueLabel.topAnchor.constraint(equalTo: self.tipLabel.bottomAnchor, constant: 0).isActive = true
+                self.yourTipValueLabel.trailingAnchor.constraint(equalTo: self.tipParentView.trailingAnchor, constant: -10).isActive = true
+                self.yourTipValueLabel.leadingAnchor.constraint(equalTo: self.yourTipLabel.trailingAnchor, constant: 0).isActive = true
+                self.yourTipValueLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = true
+            }
+        } else if count < 2{
+            print("Disabling them")
+            self.yourTipLabel.leadingAnchor.constraint(equalTo: self.tipIconReference.trailingAnchor, constant: 0).isActive = false
+            self.yourTipLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = false
+            self.yourTipLabel.topAnchor.constraint(equalTo: self.tipLabel.bottomAnchor, constant: 0).isActive = false
+            self.yourTipValueLabel.topAnchor.constraint(equalTo: self.tipLabel.bottomAnchor, constant: 0).isActive = false
+            self.yourTipValueLabel.trailingAnchor.constraint(equalTo: self.tipParentView.trailingAnchor, constant: -10).isActive = false
+            self.yourTipValueLabel.leadingAnchor.constraint(equalTo: self.yourTipLabel.trailingAnchor, constant: 0).isActive = false
+            self.yourTipValueLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = false
+        }
+       
     }
     
     
@@ -308,40 +390,76 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         }
     }
     
+    func layoutLabelBorderLines() {
+        
+        self.titledTipLabel.layer.borderWidth = 1
+        self.tipLabel.layer.borderWidth = 1
+        self.yourTipLabel.layer.borderWidth = 1
+        self.yourTipValueLabel.layer.borderWidth = 1
+        self.tipIconReference.layer.borderWidth = 1
+    }
+   
     //FIXME: - FIX THIS METHOD
     // TODO: *******************    ROUND ALL INPUT NUMBERS *************************
     func updateNumberOfPeopleSplit(count: Int?) {
+        
         let local_total = total
         let local_tip = tip
+        
         if let amount = count {
             // Compute the bill
+            
             if (amount > 1) {
-                // Half all constraints in the total and tip fields to fit 2 types of elements to be displayed
-                 print("Amount of people: \(amount), total: \(local_total), tip: \(local_tip)")
-                
+                // Halve all the elements that are dynamic
+                bottomTipLabelConstrain?.constant = -(self.tipParentView.bounds.height/2)
+                bottomTitledTipLabelConstrain?.constant = -(self.tipParentView.bounds.height/2)
+                self.instantiateSubLabelConstraints(enableConstraints: true, count: amount)
                 UIView.animate(withDuration: 0.2) {
                     self.yourTipLabel.isHidden = false
                     self.yourTipValueLabel.isHidden = false
+                    self.view.layoutIfNeeded()
                 }
                 
+                layoutInPlace = false
+                // Master label
+                tipLabel.font = tipLabel.font.withSize(27)
+                // Sublabel
+                yourTipValueLabel.font = yourTipValueLabel.font.withSize(27)
                 yourTipValueLabel.text = "\(local_tip)"
-            } else if (amount == 1) {
+                
+            }
+            else if (amount == 1) {
                 // Close all halves of constrains to a single entity
-                // TODO: ANIMAYE THE VIEW BACK TO THE BOTTOM OF THE PARENT VIEW
-                UIView.animate(withDuration: 0.2) {
-                    self.yourTipValueLabel.isHidden = true
-                    self.yourTipLabel.isHidden = true
-                    DispatchQueue.main.async {
-                        self.tipLabel.topAnchor.constraint(equalTo: self.tipParentView.topAnchor, constant: 10).isActive = true
-                        self.tipLabel.topAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = true
-                        self.view.layoutIfNeeded()
-                    }
-                }
-                print("Closing autolayout")
+                slideTipComponentsAway(sliderType: .Split)
+                layoutInPlace = true
             }
         }
     }
     
+    func slideTipComponentsAway(sliderType: SliderType) {
+      
+        if sliderType == .Split {
+            if !layoutInPlace {
+                self.bottomTipLabelConstrain?.constant = -10
+                self.bottomTitledTipLabelConstrain?.constant = -10
+                self.instantiateSubLabelConstraints(enableConstraints: false, count: 0)
+                // Animation
+                UIView.animate(withDuration: 0.2) {
+                    self.yourTipValueLabel.isHidden = true
+                    self.yourTipLabel.isHidden = true
+                    self.resetLabelFontSizes()
+                    self.view.layoutIfNeeded()
+                }
+            }
+            layoutInPlace = true
+        }
+     
+    }
+    
+    fileprivate func resetLabelFontSizes() {
+       
+        self.tipLabel.font = self.tipLabel.font.withSize(27)
+    }
     
     // MARK: - SLIDER CALCULATION
     func computeCustomTip(input: Float!)  {
@@ -367,11 +485,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     }
     
     
-   
-    
-    
-  
-  
     
     // MARK: - Slider Component
     
@@ -437,25 +550,35 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     @objc func slideViewDown() {
 
         if let slider = typeSlider {
-            
+        
+           
             // MAK: - Computing the overall height of the main view to be dismissed
             //slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
            
+            slideTipComponentsAway(sliderType: slider.getSliderType())
+            
             UIView.animate(withDuration: 0.2, animations: {
+                
                 // Slide the view down below the bottom anchor of the main view
-                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.typeSlider!.frame.height/2)
+                slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.typeSlider!.frame.height/2)
                 self.view.layoutIfNeeded()
+                
             }, completion: { (s) in
+                
                 slider.removeFromSuperview()
                 self.overlayTouchArea.removeFromSuperview()
                 self.typeSlider = nil
           
             })
             
+           
+           
+            
         }
         splitButtonReference.isEnabled = true
+       
     }
     
     // MARK: - Overlay custom area

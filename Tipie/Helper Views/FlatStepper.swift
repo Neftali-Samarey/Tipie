@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol FlatStepperDelegate : class {
+    func buttonWasToggled(condition: Bool)
+}
+
 class FlatStepper: UIView {
     
     public let leftButton = UIButton()
     public let rightButton = UIButton()
     private let middleLabel = UILabel()
+    
+    weak var delegate : FlatStepperDelegate? = nil
     
     // Defaults to 0
     public var value = 1 {
@@ -23,6 +29,7 @@ class FlatStepper: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         setup()
     }
     
@@ -47,14 +54,21 @@ class FlatStepper: UIView {
     
     fileprivate func setup() {
         
+        DispatchQueue.main.async {
+            self.delegate?.buttonWasToggled(condition: false)
+        }
         // Left button
         leftButton.setTitle("-", for: .normal)
         leftButton.backgroundColor = UIColor.flatPink()
         leftButton.addTarget(self, action: #selector(FlatStepper.leftButtonTouchDown(button:)), for: .touchUpInside)
+        
+        self.leftButton.layer.opacity = 0.5
+        self.leftButton.isEnabled = false
      
         addSubview(leftButton)
         
         // Right button
+        
         rightButton.setTitle("+", for: .normal)
         rightButton.backgroundColor = UIColor.flatPink()
         rightButton.addTarget(self, action: #selector(FlatStepper.rightButtonTouchDown(button:)), for: .touchUpInside)
@@ -74,10 +88,19 @@ class FlatStepper: UIView {
         guard value > 1 else {
             return
         }
-        value -= 1
+        if (value <= 2) {
+            self.leftButton.layer.opacity = 0.5
+            self.leftButton.isEnabled = false
+            self.delegate?.buttonWasToggled(condition: false)
+        }
+        value -= 1 // Value is at 1 when stepper is disabled at 1
     }
     
     @objc private func rightButtonTouchDown(button: UIButton) {
+        self.delegate?.buttonWasToggled(condition: true)
+        self.leftButton.isEnabled = true
+        self.leftButton.layer.opacity = 1
+        self.leftButton.backgroundColor = UIColor.flatPink() // TODO: COME UP WITH A MORE EFFICIENT METHOD OF REVERTING
         value += 1
     }
     
@@ -89,6 +112,8 @@ class FlatStepper: UIView {
     public func setRightButtonColorWith(color: UIColor) {
         self.rightButton.backgroundColor = color
     }
+    
+
     
     
    

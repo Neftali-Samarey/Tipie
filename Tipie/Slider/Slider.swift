@@ -20,8 +20,11 @@ protocol didSlideThroughDelegate: class {
 }
 
 
-class Slider: UIView {
+class Slider: UIView, FlatStepperDelegate {
+   
     
+    
+
     // MARK: - UI Properties
     var titleLabel = UILabel()
     var percentageLabel = UILabel()
@@ -34,11 +37,13 @@ class Slider: UIView {
     
     // Delegate Property
     weak var delegate : didSlideThroughDelegate?
+    private var typeOfSlider : SliderType!
     
     // MARK: - CONTROL UI PROPERTIES
     // Tip variables
     var percentileValue : Double = 0
     var decimalValue : Float = 0.0
+    var isCustomButtonEnabled: Bool?
     
     // Split Variables
 
@@ -69,8 +74,10 @@ class Slider: UIView {
     func style(slidertype: SliderType) {
         switch slidertype {
         case .Split:
+            typeOfSlider = slidertype
             setupSplitController()
         case .Tip:
+            typeOfSlider = slidertype
             setupCustomTipController()
         }
     }
@@ -82,7 +89,7 @@ class Slider: UIView {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.numberOfPeopleStepper.translatesAutoresizingMaskIntoConstraints = false
-       
+        self.numberOfPeopleStepper.delegate = self
         
         self.addSubview(titleLabel)
         self.addSubview(subTitleLabel)
@@ -170,6 +177,16 @@ class Slider: UIView {
         
     }
     
+    // MARK: - FLAT STEPPER BUTTON DELEGATE
+    open func isCustomButtonEnabled(condition: Bool) -> Bool {
+        isCustomButtonEnabled = false
+        if condition{
+         isCustomButtonEnabled = true
+            return isCustomButtonEnabled!
+        }
+        return isCustomButtonEnabled!
+    }
+    
     
     // MARK: - ACTION METHODS
     
@@ -206,7 +223,17 @@ class Slider: UIView {
         selectedFeedbackGenerator.impactOccurred()
         self.delegate?.updateNumberOfPeopleSplit(count: numberOfPeopleStepper.value)
     }
-  
+    
+    public func getSliderType() -> SliderType {
+        return typeOfSlider
+    }
+    
+    
+    // MARK: STEPPER DELEGATES
+    func buttonWasToggled(condition: Bool) {
+        self.isCustomButtonEnabled = condition
+        print("Button State: \(isCustomButtonEnabled!)")
+    }
     
  
 }
