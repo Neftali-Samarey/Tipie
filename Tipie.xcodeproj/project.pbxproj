@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED32EDD1222438C200A183C3 /* FlatStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32EDD0222438C200A183C3 /* FlatStepper.swift */; };
+		ED3C187D222F2D5900D5D00D /* HoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C187C222F2D5900D5D00D /* HoverView.swift */; };
 		ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D38FB21F18F5700C68323 /* AppDelegate.swift */; };
 		ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D38FD21F18F5700C68323 /* ViewController.swift */; };
 		ED3D390121F18F5700C68323 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3D38FF21F18F5700C68323 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		ED32EDD0222438C200A183C3 /* FlatStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatStepper.swift; sourceTree = "<group>"; };
+		ED3C187C222F2D5900D5D00D /* HoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverView.swift; sourceTree = "<group>"; };
 		ED3D38F821F18F5700C68323 /* Tipie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3D38FB21F18F5700C68323 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED3D38FD21F18F5700C68323 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				ED3D38FB21F18F5700C68323 /* AppDelegate.swift */,
 				ED3D38FD21F18F5700C68323 /* ViewController.swift */,
+				ED3C187C222F2D5900D5D00D /* HoverView.swift */,
 				ED513B1F221E19B700B452AA /* Helper Views */,
 				ED3D393121F4190100C68323 /* Controllers */,
 				ED3D392E21F265D300C68323 /* Slider */,
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3C187D222F2D5900D5D00D /* HoverView.swift in Sources */,
 				ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */,
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
 				EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */,

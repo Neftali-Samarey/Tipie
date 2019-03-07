@@ -37,6 +37,10 @@ extension UIColor {
     class func flatPinkBackground()->UIColor {
         return UIColor(r: 255, g: 241, b: 244)
     }
+    
+    class func TipiePink()->UIColor {
+        return UIColor(r: 255, g: 26, b: 65)
+    }
 
 
 }

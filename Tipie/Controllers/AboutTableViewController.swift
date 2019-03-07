@@ -9,9 +9,22 @@
 import UIKit
 import MessageUI
 
+// Delegates
+protocol UserToggledControlsDelegate: class {
+    func userToggledRounding(value: Bool)
+}
+
 class AboutTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
    
+    weak var delegate: UserToggledControlsDelegate? = nil
+    
+    @IBOutlet weak var toggleRoundingReference: UISwitch!
+    
+    @IBAction func toggleRoundingAction(_ sender: Any) {
+       // work on the sender 
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +69,7 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
     
     // MARK: - SEND EMAIL

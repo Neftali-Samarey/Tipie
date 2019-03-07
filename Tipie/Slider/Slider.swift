@@ -57,7 +57,7 @@ class Slider: UIView, FlatStepperDelegate {
         self.layer.cornerRadius = 15
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOpacity = 0.4
-        self.layer.shadowOffset = CGSize(width: 0, height: -8)
+        self.layer.shadowOffset = CGSize(width: 0, height: -5)
         selectedFeedbackGenerator.prepare()
     
     }

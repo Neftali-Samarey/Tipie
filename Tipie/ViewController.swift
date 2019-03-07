@@ -26,11 +26,17 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     @IBOutlet weak var totalLabel: UILabel!
     
     // IMAGE REFERENCES
+    @IBOutlet weak var dueIconReference: UIImageView!
     @IBOutlet weak var tipIconReference: UIImageView!
+    @IBOutlet weak var totalIconReference: UIImageView!
     
     // Dynamic labels
+    @IBOutlet weak var titledDueLabel : UILabel!
     @IBOutlet weak var titledTipLabel: UILabel!
+    @IBOutlet weak var titledTotalLabel: UILabel!
     
+    
+    @IBOutlet weak var dueParentView: UIView!
     @IBOutlet weak var tipParentView: UIView!
     @IBOutlet weak var totalParentView: UIView!
     
@@ -67,8 +73,16 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     // CONSTRAINT REFERENCE VARIABLES
     @IBOutlet weak var yourTipValueLabel: UILabel!
     @IBOutlet weak var yourTipLabel: UILabel!
+    
     var bottomTipLabelConstrain : NSLayoutConstraint?
     var bottomTitledTipLabelConstrain : NSLayoutConstraint?
+    
+    // TOTAL DUE ELEMENTS
+    @IBOutlet weak var yourTotalLabel: UILabel!
+    @IBOutlet weak var yourTotalValue: UILabel!
+    
+    var bottomTotalLabelConstrain : NSLayoutConstraint?
+    var bottomTitledTotalLabelConstraint : NSLayoutConstraint?
     
     // COMPUTING BASED ON INPUT
     @IBAction func actionKey(_ sender: UIButton) {
@@ -131,6 +145,10 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         return modifiedLabel
     }
     
+    // MARK: - STATUS BAR
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
    
     
     
@@ -232,7 +250,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
         // Dynamic labels
 //        self.dueLabel.font = dueLabel.font.withSize(self.view.frame.height * relativeFontConstant)
-//        self.tipLabel.font = tipLabel.font.withSize(self.view.frame.height * relativeFontConstant)
+//        self.tipLabel.font = tipLabel.font.withSize(self.view.fra`me.height * relativeFontConstant)
 //        self.totalLabel.font = totalLabel.font.withSize(self.view.frame.height * relativeFontConstant)
         
         // Static labels
@@ -250,23 +268,66 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
         
         //FIXME: REMOVE()
-       // layoutLabelBorderLines()
+        //layoutLabelBorderLines()
     }
     
     func hideSplitSublabels() {
         yourTipValueLabel.isHidden = true
         yourTipLabel.isHidden = true
+        
+        yourTotalLabel.isHidden = true
+        yourTotalValue.isHidden = true
     }
     
     func iniiateConstraintReferences() {
         // Set all init lables to false for the default constraints
+        
+        dueIconReference.translatesAutoresizingMaskIntoConstraints = false
         tipIconReference.translatesAutoresizingMaskIntoConstraints = false
+        totalIconReference.translatesAutoresizingMaskIntoConstraints = false
+       // totalIconReference.translatesAutoresizingMaskIntoConstraints = false
+        
+        // MARK: - IF ERRORS, LOOK HERE FOR THE CONSTRAIN REFERENCE
+        dueLabel.translatesAutoresizingMaskIntoConstraints = false
         tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        totalLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Titled Due label
+        titledDueLabel.translatesAutoresizingMaskIntoConstraints = false
+        titledDueLabel.topAnchor.constraint(equalTo: self.dueParentView.topAnchor, constant: 10).isActive = true
+        titledDueLabel.leadingAnchor.constraint(equalTo: self.dueIconReference.trailingAnchor, constant: 8).isActive = true
+        // optional bottom constraint
+        titledDueLabel.bottomAnchor.constraint(equalTo: self.dueParentView.bottomAnchor, constant: -10).isActive = true
+        
+        // Due label constraints
+        dueIconReference.contentMode = .scaleAspectFit
+        dueIconReference.leadingAnchor.constraint(equalTo: self.dueParentView.leadingAnchor, constant: 8).isActive = true
+        dueIconReference.heightAnchor.constraint(equalToConstant: self.dueParentView.bounds.height - 45).isActive = true
+        dueIconReference.widthAnchor.constraint(equalToConstant: self.dueParentView.bounds.height - 45).isActive = true
+        dueIconReference.centerYAnchor.constraint(equalTo: self.dueParentView.centerYAnchor, constant: 0).isActive = true
+        
+        dueLabel.topAnchor.constraint(equalTo: self.dueParentView.topAnchor, constant: 10).isActive = true
+        dueLabel.trailingAnchor.constraint(equalTo: self.dueParentView.trailingAnchor, constant: -10).isActive = true
+        dueLabel.leadingAnchor.constraint(equalTo: self.titledDueLabel.trailingAnchor, constant: 0).isActive = true
+        dueLabel.bottomAnchor.constraint(equalTo: self.dueParentView.bottomAnchor, constant: -10).isActive = true
+        
+        // end
+        // Total constraints
+        totalIconReference.contentMode = .scaleAspectFit
+        totalIconReference.leadingAnchor.constraint(equalTo: self.totalParentView.leadingAnchor, constant: 8).isActive = true
+        totalIconReference.heightAnchor.constraint(equalToConstant: self.totalParentView.bounds.height - 45).isActive = true
+        totalIconReference.widthAnchor.constraint(equalToConstant: self.totalParentView.bounds.height - 45).isActive = true
+        totalIconReference.centerYAnchor.constraint(equalTo: self.totalParentView.centerYAnchor, constant: 0).isActive = true
+        
+        totalLabel.topAnchor.constraint(equalTo: self.totalParentView.topAnchor, constant: 10).isActive = true
+        totalLabel.trailingAnchor.constraint(equalTo: self.totalParentView.trailingAnchor, constant: -10).isActive = true
+        totalLabel.leadingAnchor.constraint(equalTo: self.titledTotalLabel.trailingAnchor, constant: 0).isActive = true
+        totalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
+        
+        /****  MARK: DUE DYNAMIC CONSTRAINTS ****/
         titledTipLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+       
         tipIconReference.contentMode = .scaleAspectFit
-      
-        
         // Image constraint
         tipIconReference.leadingAnchor.constraint(equalTo: self.tipParentView.leadingAnchor, constant: 8).isActive = true
         tipIconReference.heightAnchor.constraint(equalToConstant: self.tipParentView.bounds.height - 45).isActive = true
@@ -286,14 +347,34 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         // Constraints below are defined to work as normal constraints
         tipLabel.leadingAnchor.constraint(equalTo: self.titledTipLabel.trailingAnchor, constant: 0).isActive = true
         
+        /****  MARK: TOTAL DYNAMIC CONSTRAINTS ****/
+         titledTotalLabel.translatesAutoresizingMaskIntoConstraints = false
+        // Total label title only**
+        bottomTitledTotalLabelConstraint = titledTotalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10)
+        titledTotalLabel.topAnchor.constraint(equalTo: self.totalParentView.topAnchor, constant: 10).isActive = true
+        titledTotalLabel.leadingAnchor.constraint(equalTo: self.totalIconReference.trailingAnchor, constant: 8).isActive = true
+        
+        // Total label (default dynamic label)
+        bottomTotalLabelConstrain = totalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10)
+        totalLabel.topAnchor.constraint(equalTo: self.totalParentView.topAnchor, constant: 10).isActive = true
+        totalLabel.trailingAnchor.constraint(equalTo: self.totalParentView.trailingAnchor, constant: -10).isActive = true
+        
+        bottomTitledTotalLabelConstraint?.isActive = true
+        bottomTotalLabelConstrain?.isActive = true
+        
         bottomTipLabelConstrain?.isActive = true // Pins the tip label 10 points from the parent bottom
         bottomTitledTipLabelConstrain?.isActive = true
     }
+    
+    
     
     private func instantiateSubLabelConstraints(enableConstraints: Bool, count: Int) {
         
         yourTipLabel.translatesAutoresizingMaskIntoConstraints = false
         yourTipValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        yourTotalLabel.translatesAutoresizingMaskIntoConstraints = false
+        yourTotalValue.translatesAutoresizingMaskIntoConstraints = false
         
         if (enableConstraints == true) {
             DispatchQueue.main.async {
@@ -304,6 +385,15 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 self.yourTipValueLabel.trailingAnchor.constraint(equalTo: self.tipParentView.trailingAnchor, constant: -10).isActive = true
                 self.yourTipValueLabel.leadingAnchor.constraint(equalTo: self.yourTipLabel.trailingAnchor, constant: 0).isActive = true
                 self.yourTipValueLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = true
+                
+                // Total cell
+                self.yourTotalLabel.leadingAnchor.constraint(equalTo: self.totalIconReference.trailingAnchor, constant: 8).isActive = true
+                self.yourTotalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
+                self.yourTotalLabel.topAnchor.constraint(equalTo: self.totalLabel.bottomAnchor, constant: 0).isActive = true
+                self.yourTotalValue.topAnchor.constraint(equalTo: self.totalLabel.bottomAnchor, constant: 0).isActive = true
+                self.yourTotalValue.trailingAnchor.constraint(equalTo: self.totalParentView.trailingAnchor, constant: -10).isActive = true
+                self.yourTotalValue.leadingAnchor.constraint(equalTo: self.yourTotalLabel.trailingAnchor, constant: 0).isActive = true
+                self.yourTotalValue.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
             }
         } else if count < 2{
             print("Disabling them")
@@ -392,19 +482,37 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     
     func layoutLabelBorderLines() {
         
-        self.titledTipLabel.layer.borderWidth = 1
-        self.tipLabel.layer.borderWidth = 1
-        self.yourTipLabel.layer.borderWidth = 1
-        self.yourTipValueLabel.layer.borderWidth = 1
-        self.tipIconReference.layer.borderWidth = 1
+//        // Due section
+//        self.dueLabel.layer.borderWidth = 1
+//        self.titledDueLabel.layer.borderWidth = 1
+        
+        
+//        // Tip section
+//        self.titledTipLabel.layer.borderWidth = 1
+//        self.tipLabel.layer.borderWidth = 1
+//        self.yourTipLabel.layer.borderWidth = 1
+//        self.yourTipValueLabel.layer.borderWidth = 1
+//        self.tipIconReference.layer.borderWidth = 1
+        
+        // total section
+        
+        self.totalIconReference.layer.borderWidth = 1
+        self.titledTotalLabel.layer.borderWidth = 1
+        self.totalLabel.layer.borderWidth = 1
+        
     }
+    
+    // MARK: - ROUNDING DELEGATE METHOD
+    
+    
+    
    
-    //FIXME: - FIX THIS METHOD
     // TODO: *******************    ROUND ALL INPUT NUMBERS *************************
     func updateNumberOfPeopleSplit(count: Int?) {
         
-        let local_total = total
-        let local_tip = tip
+        // Without affecting the global amount due, I am using local variables to compute the tip
+        let splitTotalAmount = total
+        let splitTipAmount = tip
         
         if let amount = count {
             // Compute the bill
@@ -413,10 +521,16 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 // Halve all the elements that are dynamic
                 bottomTipLabelConstrain?.constant = -(self.tipParentView.bounds.height/2)
                 bottomTitledTipLabelConstrain?.constant = -(self.tipParentView.bounds.height/2)
+                
+                bottomTotalLabelConstrain?.constant = -(self.totalParentView.bounds.height/2)
+                bottomTitledTotalLabelConstraint?.constant = -(self.totalParentView.bounds.height/2)
                 self.instantiateSubLabelConstraints(enableConstraints: true, count: amount)
                 UIView.animate(withDuration: 0.2) {
                     self.yourTipLabel.isHidden = false
                     self.yourTipValueLabel.isHidden = false
+                    
+                    self.yourTotalLabel.isHidden = false
+                    self.yourTotalValue.isHidden = false
                     self.view.layoutIfNeeded()
                 }
                 
@@ -425,7 +539,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 tipLabel.font = tipLabel.font.withSize(27)
                 // Sublabel
                 yourTipValueLabel.font = yourTipValueLabel.font.withSize(27)
-                yourTipValueLabel.text = "\(local_tip)"
+                yourTipValueLabel.text = "$\(splitTipAmount.rounded())"
                 
             }
             else if (amount == 1) {
@@ -442,11 +556,17 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
             if !layoutInPlace {
                 self.bottomTipLabelConstrain?.constant = -10
                 self.bottomTitledTipLabelConstrain?.constant = -10
+                
+                self.bottomTotalLabelConstrain?.constant = -10
+                self.bottomTitledTotalLabelConstraint?.constant = -10
+                
                 self.instantiateSubLabelConstraints(enableConstraints: false, count: 0)
                 // Animation
                 UIView.animate(withDuration: 0.2) {
                     self.yourTipValueLabel.isHidden = true
                     self.yourTipLabel.isHidden = true
+                    self.yourTotalValue.isHidden = true
+                    self.yourTotalLabel.isHidden = true
                     self.resetLabelFontSizes()
                     self.view.layoutIfNeeded()
                 }
@@ -466,7 +586,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         print("Recieved: \(input!)")
         tip = displayQuantity * Float(input)
         total = displayQuantity + self.tip
-        animateLabelsWith(tip: tip, total: total) // pass by reference
+        animateLabelsWith(tip: tip, total: total)
     }
 
     
@@ -491,7 +611,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     func slideCustomViewWithType(type: SliderType) {
         
         typeSlider = Slider(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
-        
         typeSlider?.translatesAutoresizingMaskIntoConstraints = false
         if let slider = typeSlider {
             slider.style(slidertype: type)
@@ -551,7 +670,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
 
         if let slider = typeSlider {
         
-           
             // MAK: - Computing the overall height of the main view to be dismissed
             //slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
@@ -570,11 +688,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 slider.removeFromSuperview()
                 self.overlayTouchArea.removeFromSuperview()
                 self.typeSlider = nil
-          
             })
-            
-           
-           
             
         }
         splitButtonReference.isEnabled = true
