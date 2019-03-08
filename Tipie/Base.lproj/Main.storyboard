@@ -67,7 +67,7 @@
                         <sections>
                             <tableViewSection headerTitle="Round Tips" id="QwM-yc-UwQ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nbS-jf-dea">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="nbS-jf-dea">
                                         <rect key="frame" x="0.0" y="215.33333333333334" width="375" height="44.000000000000028"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbS-jf-dea" id="bnQ-uN-W1y">
@@ -92,7 +92,7 @@
                                                         <constraint firstAttribute="width" constant="47" id="kaC-ca-p5a"/>
                                                         <constraint firstAttribute="width" secondItem="UTh-Qc-QF6" secondAttribute="height" multiplier="47:31" id="tb6-dI-qbA"/>
                                                     </constraints>
-                                                    <color key="onTintColor" red="0.070588235289999995" green="0.79607843140000001" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="onTintColor" red="0.88235294119999996" green="0.1019607843" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="toggleRoundingAction:" destination="UR0-h6-gjc" eventType="valueChanged" id="Wqh-9G-iXf"/>
                                                     </connections>

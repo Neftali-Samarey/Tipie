@@ -9,26 +9,39 @@
 import UIKit
 import MessageUI
 
-// Delegates
-protocol UserToggledControlsDelegate: class {
-    func userToggledRounding(value: Bool)
-}
+// Notification keys
+let notificationKey = "nt100"
 
 class AboutTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-   
-    weak var delegate: UserToggledControlsDelegate? = nil
+    let defaults = UserDefaults.standard
+    @IBOutlet weak public var toggleRoundingReference: UISwitch!
     
-    @IBOutlet weak var toggleRoundingReference: UISwitch!
-    
-    @IBAction func toggleRoundingAction(_ sender: Any) {
-       // work on the sender 
+    // MARK: - ROUNDING TOGGLING
+    @IBAction func toggleRoundingAction(_ sender: UISwitch) {
+        
+        // work on the sender
+        // Posting notification
+        if sender.isOn {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self, userInfo: ["on" : true])
+            defaults.set(true, forKey: "toggled")
+          //NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
+        } else {
+             NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self, userInfo: ["off" : false])
+             defaults.set(false, forKey: "toggled")
+         //NotificationCenter.default.post(name: Notification.Name(rawValue: notificationKey), object: self)
+        }
     }
+    
+    @objc func userDismissedView(notification :NSNotification) {
+       
+    }
+  
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        toggleRoundingReference.isOn =  UserDefaults.standard.bool(forKey: "toggled")
         self.title = "About Tipie"
         styleTableViewController()
        
@@ -38,6 +51,9 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
         ]
         navigationController?.navigationBar.titleTextAttributes = attributes
+        
+        // notification
+         NotificationCenter.default.addObserver(self, selector: #selector(self.userDismissedView(notification:)), name: NSNotification.Name(notificationKey), object: nil)
     }
     
     // MARK: - Table Styles

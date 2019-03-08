@@ -17,9 +17,12 @@ enum TipPercentage : Float {
 }
 
 class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideThroughDelegate {
-   
-    var typeSlider : Slider?
     
+    
+
+    var typeSlider : Slider?
+    let roundingDefaults = UserDefaults.standard
+    var tipRoundingAvailable: Bool?
     // LABELS
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
@@ -145,13 +148,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         return modifiedLabel
     }
     
-    // MARK: - STATUS BAR
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-   
-    
-    
+
     // MARK: - DECIMAL INSERTION METHOD
     @IBAction func decimalInsertion(_ sender: UIButton) {
         
@@ -231,12 +228,19 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         loadSavedRoundingPreferences()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Tipie"
-        
+        // Notification Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userChoseRounding(_:)),name: NSNotification.Name(rawValue: notificationKey),object: nil)
+       
         self.cleanSlate = false
         self.splitButton.isEnabled = false
         loadCustomSegmentControl()
@@ -267,8 +271,14 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
         
+       
+      
         //FIXME: REMOVE()
         //layoutLabelBorderLines()
+    }
+    
+    func loadSavedRoundingPreferences() {
+        tipRoundingAvailable = UserDefaults.standard.bool(forKey: "rounding")
     }
     
     func hideSplitSublabels() {
@@ -502,9 +512,17 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
     }
     
-    // MARK: - ROUNDING DELEGATE METHOD
-    
-    
+    // MARK: - ROUNDING NOTIFICATION METHOD
+    @objc func userChoseRounding(_ notification:Notification) {
+        
+        if let data = notification.userInfo as? [String: Bool]{
+            if data["on"] == true {
+                roundingDefaults.set(true, forKey: "rounding")
+            } else if data["off"] == false {
+                roundingDefaults.set(false, forKey: "rounding")
+            }
+        }
+    }
     
    
     // TODO: *******************    ROUND ALL INPUT NUMBERS *************************
@@ -539,7 +557,22 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 tipLabel.font = tipLabel.font.withSize(27)
                 // Sublabel
                 yourTipValueLabel.font = yourTipValueLabel.font.withSize(27)
-                yourTipValueLabel.text = "$\(splitTipAmount.rounded())"
+           
+                let tipYouGive = splitTipAmount/Float(amount)
+                let totalSplit = splitTotalAmount/Float(amount)
+                let grandTotalDueByPerson = tipYouGive + totalSplit
+                // Check to see user toggled rounded option. if so, round the tip
+                if let roundedBoolean = tipRoundingAvailable {
+                    if (roundedBoolean) {
+                      
+                        yourTipValueLabel.text = String(format: "$%0.2f", tipYouGive.rounded())
+                        yourTotalValue.text = String(format: "$%0.2f", grandTotalDueByPerson.rounded())
+                        
+                    } else {
+                         yourTipValueLabel.text = String(format: "$%0.2f", tipYouGive)
+                         yourTotalValue.text = String(format: "$%0.2f", grandTotalDueByPerson)
+                    }
+                }
                 
             }
             else if (amount == 1) {
@@ -700,6 +733,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         tapGestureRecorgnizer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
         overlayTouchArea.addGestureRecognizer(tapGestureRecorgnizer!)
     }
+    
+    
     
     
 }
