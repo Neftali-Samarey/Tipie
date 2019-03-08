@@ -21,6 +21,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     
 
     var typeSlider : Slider?
+    var sliderTipIsActive : Bool?
     let roundingDefaults = UserDefaults.standard
     var tipRoundingAvailable: Bool?
     // LABELS
@@ -563,6 +564,16 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 let grandTotalDueByPerson = tipYouGive + totalSplit
                 // Check to see user toggled rounded option. if so, round the tip
                 if let roundedBoolean = tipRoundingAvailable {
+                    
+                    // Animation for the tip, tip text label, and total text labels
+//                    UIView.animate(withDuration: 0.3) {
+//
+//                        self.tipLabel.textColor = UIColor.lightGray
+//                        self.titledTipLabel.textColor = UIColor.lightGray
+//                        self.titledTotalLabel.textColor = UIColor.lightGray
+//                        self.totalLabel.textColor = UIColor.lightGray
+//                    }
+                    
                     if (roundedBoolean) {
                       
                         yourTipValueLabel.text = String(format: "$%0.2f", tipYouGive.rounded())
@@ -595,7 +606,16 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 
                 self.instantiateSubLabelConstraints(enableConstraints: false, count: 0)
                 // Animation
+//                self.tipLabel.textColor = UIColor.black
+//                self.titledTipLabel.textColor = UIColor.black
+//                self.titledTotalLabel.textColor = UIColor.black
+//                self.totalLabel.textColor = UIColor.black
+                
                 UIView.animate(withDuration: 0.2) {
+                    
+                    // Set the opacity back to default
+                   
+                    
                     self.yourTipValueLabel.isHidden = true
                     self.yourTipLabel.isHidden = true
                     self.yourTotalValue.isHidden = true
@@ -605,6 +625,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 }
             }
             layoutInPlace = true
+          
         }
      
     }
@@ -642,6 +663,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     // MARK: - Slider Component
     
     func slideCustomViewWithType(type: SliderType) {
+      
         
         typeSlider = Slider(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
         typeSlider?.translatesAutoresizingMaskIntoConstraints = false

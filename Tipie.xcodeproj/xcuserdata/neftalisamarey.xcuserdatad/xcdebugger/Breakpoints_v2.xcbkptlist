@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tipie/ViewController.swift"
-            timestampString = "573718164.739477"
+            timestampString = "573777318.93808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "tipControl(_:)"
             landmarkType = "7">
          </BreakpointContent>
