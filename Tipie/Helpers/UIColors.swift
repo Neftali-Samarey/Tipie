@@ -41,6 +41,13 @@ extension UIColor {
     class func TipiePink()->UIColor {
         return UIColor(r: 255, g: 26, b: 65)
     }
-
+    
+    class func TipiePinkOverlay()->UIColor { //
+        return UIColor(r: 255, g: 48, b: 84)
+    }
+    
+    class func PinkOverlay()-> UIColor {
+        return UIColor(r: 255, g: 52, b: 86)
+    }
 
 }

@@ -102,7 +102,7 @@ class Slider: UIView, FlatStepperDelegate {
         titleLabel.text = "Split Bill"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: "Lato-Semibold", size: 24)
-        titleLabel.textColor = UIColor.lightGray
+        titleLabel.textColor = UIColor.gray
         self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         self.titleLabel.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
@@ -150,7 +150,7 @@ class Slider: UIView, FlatStepperDelegate {
         titleLabel.text = "Custom Tip"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: "Lato-Semibold", size: 23)
-        titleLabel.textColor = UIColor.lightGray
+        titleLabel.textColor = UIColor.gray
         self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         self.titleLabel.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
         self.titleLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
@@ -192,8 +192,6 @@ class Slider: UIView, FlatStepperDelegate {
     
     @objc func changedValue(_ sender: UISlider) {
         
-        //percentileValue = Int(sender.value) // Int for label
-        
         print(String(format: "%0.2f", sender.value))
         
         let fractionalPart = sender.value.truncatingRemainder(dividingBy: 1.0)
@@ -232,7 +230,7 @@ class Slider: UIView, FlatStepperDelegate {
     // MARK: STEPPER DELEGATES
     func buttonWasToggled(condition: Bool) {
         self.isCustomButtonEnabled = condition
-        print("Button State: \(isCustomButtonEnabled!)")
+       // print("Button State: \(isCustomButtonEnabled!)")
     }
     
  

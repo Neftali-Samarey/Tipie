@@ -14,6 +14,20 @@ let notificationKey = "nt100"
 
 class AboutTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
+    // CONSTRAINT OUTLETS ITEMS
+    @IBOutlet weak var rateCell: UITableViewCell!
+    @IBOutlet weak var feedbackCell: UITableViewCell!
+    @IBOutlet weak var shareCell: UITableViewCell!
+    
+    @IBOutlet weak var rateImageIcon: UIImageView!
+    @IBOutlet weak var feedbackImageIcon: UIImageView!
+    @IBOutlet weak var shareImageIcon: UIImageView!
+    @IBOutlet weak var rateTipieLabel: UILabel!
+    @IBOutlet weak var feedbackLabel: UILabel!
+    @IBOutlet weak var shareLabel: UILabel!
+    
+    @IBOutlet weak var buildVersionLabel: UILabel!
+    
     let defaults = UserDefaults.standard
     @IBOutlet weak public var toggleRoundingReference: UISwitch!
     
@@ -37,14 +51,16 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
        
     }
   
-    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleRoundingReference.isOn =  UserDefaults.standard.bool(forKey: "toggled")
         self.title = "About Tipie"
+        self.setConstraints()
         styleTableViewController()
        
+        self.getSoftwareBuildVersion()
         
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
@@ -64,6 +80,14 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
     // MARK: - Controller Methods
     @IBAction func dismissAboutController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func getSoftwareBuildVersion() {
+        
+        if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            buildVersionLabel.text = text
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,29 +101,53 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
         case 2:
             print("2")
         case 3:
-             sendEmail()
+             rateTipie()
         case 4:
-            shareTipie()
+             sendEmail()
+        case 5:
+             shareTipie()
         default:
             print("None selected")
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    fileprivate func rateTipie() {
+        rateApp(appId: "1454194057") { success in
+            print("RateApp \(success)")
+        }
+    }
     
+    // Rate app method
+    func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
+        guard let url = URL(string : "itms-apps://itunes.apple.com/app/" + appId) else {
+            completion(false)
+            return
+        }
+        guard #available(iOS 10, *) else {
+            completion(UIApplication.shared.openURL(url))
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: completion)
+    }
     
     // MARK: - SEND EMAIL
+    
     func sendEmail() {
         
+        if let text = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+           
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["neftalisamarey@gmail.com"])
-            mail.setMessageBody("<p> </p>", isHTML: true)
+            mail.setMessageBody("<p><br/><br/><br/><br/><br/>Build Version: \(text) </p>", isHTML: true)
             
             present(mail, animated: true, completion: nil)
         } else {
             // Fail alert
+            self.errorMessage()
+            }
         }
     }
     
@@ -107,8 +155,78 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
         controller.dismiss(animated: true, completion: nil)
     }
     
+    let errorMessage = {() -> Void in
+        SweetAlert().showAlert("Email client error", subTitle: "Your email client has not been setup with an email account. Please go to accounts under settings menu to set up an email account.", style: AlertStyle.error)
+    }
+    
     // MARK: - SHARE APP
     func shareTipie() {
+        
+    }
+    
+    
+    
+    // MARK: - PROGRAMMATIC AUTOLAYOUT CONSTRAINT METHOD
+    fileprivate func setConstraints() {
+        // turn em' off
+        rateImageIcon.translatesAutoresizingMaskIntoConstraints = false
+        feedbackImageIcon.translatesAutoresizingMaskIntoConstraints = false
+        shareImageIcon.translatesAutoresizingMaskIntoConstraints = false
+        
+        rateTipieLabel.translatesAutoresizingMaskIntoConstraints = false
+        feedbackLabel.translatesAutoresizingMaskIntoConstraints = false
+        shareLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // temp
+      
+        
+        rateImageIcon.contentMode = .scaleAspectFit
+        feedbackImageIcon.contentMode = .scaleAspectFit
+        shareImageIcon.contentMode = .scaleAspectFit
+        // constrain em'
+       
+        
+        // CELL 1
+        rateImageIcon.leadingAnchor.constraint(equalTo: self.rateCell.leadingAnchor, constant: 5).isActive = true
+        rateImageIcon.trailingAnchor.constraint(equalTo: self.rateTipieLabel.leadingAnchor, constant: 5).isActive = true
+        rateImageIcon.centerYAnchor.constraint(equalTo: rateCell.centerYAnchor, constant: 0).isActive = true
+        rateImageIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        rateImageIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // LABEL
+        rateTipieLabel.trailingAnchor.constraint(equalTo: self.rateCell.trailingAnchor, constant: -10).isActive = true
+        rateTipieLabel.leadingAnchor.constraint(equalTo: self.rateCell.leadingAnchor, constant: 60).isActive = true
+        rateTipieLabel.topAnchor.constraint(equalTo: self.rateCell.topAnchor, constant: 5).isActive = true
+        rateTipieLabel.bottomAnchor.constraint(equalTo: self.rateCell.bottomAnchor, constant: -5).isActive = true
+        
+        
+        
+        // CELL 2
+        feedbackImageIcon.leadingAnchor.constraint(equalTo: self.feedbackCell.leadingAnchor, constant: 5).isActive = true
+        feedbackImageIcon.trailingAnchor.constraint(equalTo: self.feedbackLabel.leadingAnchor, constant: 5).isActive = true
+        feedbackImageIcon.centerYAnchor.constraint(equalTo: feedbackCell.centerYAnchor, constant: 0).isActive = true
+        feedbackImageIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        feedbackImageIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // LABEL
+        feedbackLabel.trailingAnchor.constraint(equalTo: self.feedbackCell.trailingAnchor, constant: -10).isActive = true
+        feedbackLabel.leadingAnchor.constraint(equalTo: self.feedbackCell.leadingAnchor, constant: 60).isActive = true
+        feedbackLabel.topAnchor.constraint(equalTo: self.feedbackCell.topAnchor, constant: 5).isActive = true
+        feedbackLabel.bottomAnchor.constraint(equalTo: self.feedbackCell.bottomAnchor, constant: -5).isActive = true
+        
+        
+        // CELL 3
+        shareImageIcon.leadingAnchor.constraint(equalTo: self.shareCell.leadingAnchor, constant: 5).isActive = true
+        shareImageIcon.trailingAnchor.constraint(equalTo: self.shareLabel.leadingAnchor, constant: 5).isActive = true
+        shareImageIcon.centerYAnchor.constraint(equalTo: shareCell.centerYAnchor, constant: 0).isActive = true
+        shareImageIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        shareImageIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // LABEL
+        shareLabel.trailingAnchor.constraint(equalTo: self.shareCell.trailingAnchor, constant: -10).isActive = true
+        shareLabel.leadingAnchor.constraint(equalTo: self.shareCell.leadingAnchor, constant: 60).isActive = true
+        shareLabel.topAnchor.constraint(equalTo: self.shareCell.topAnchor, constant: 5).isActive = true
+        shareLabel.bottomAnchor.constraint(equalTo: self.shareCell.bottomAnchor, constant: -5).isActive = true
         
     }
     

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED1170AE2240AACC00E3CE8E /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1170AD2240AACC00E3CE8E /* SweetAlert.swift */; };
 		ED32EDD1222438C200A183C3 /* FlatStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED32EDD0222438C200A183C3 /* FlatStepper.swift */; };
 		ED3C187D222F2D5900D5D00D /* HoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3C187C222F2D5900D5D00D /* HoverView.swift */; };
+		ED3C77B42233843F00357FB2 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3C77B32233843F00357FB2 /* Lato-Medium.ttf */; };
 		ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D38FB21F18F5700C68323 /* AppDelegate.swift */; };
 		ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D38FD21F18F5700C68323 /* ViewController.swift */; };
 		ED3D390121F18F5700C68323 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3D38FF21F18F5700C68323 /* Main.storyboard */; };
@@ -43,8 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED1170AD2240AACC00E3CE8E /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		ED32EDD0222438C200A183C3 /* FlatStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatStepper.swift; sourceTree = "<group>"; };
 		ED3C187C222F2D5900D5D00D /* HoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverView.swift; sourceTree = "<group>"; };
+		ED3C77B32233843F00357FB2 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		ED3D38F821F18F5700C68323 /* Tipie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3D38FB21F18F5700C68323 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED3D38FD21F18F5700C68323 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			children = (
 				ED3D395721F5418800C68323 /* Lato-Semibold.ttf */,
 				ED3D392A21F196C600C68323 /* Lato-Light.ttf */,
+				ED3C77B32233843F00357FB2 /* Lato-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 		ED3D393621F424D800C68323 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ED1170AD2240AACC00E3CE8E /* SweetAlert.swift */,
 				ED3D393721F424F900C68323 /* UIColors.swift */,
 			);
 			path = Helpers;
@@ -297,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */,
+				ED3C77B42233843F00357FB2 /* Lato-Medium.ttf in Resources */,
 				ED3D392B21F196D100C68323 /* Lato-Light.ttf in Resources */,
 				ED3D390621F18F5800C68323 /* LaunchScreen.storyboard in Resources */,
 				ED3D390321F18F5800C68323 /* Assets.xcassets in Resources */,
@@ -326,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED3C187D222F2D5900D5D00D /* HoverView.swift in Sources */,
+				ED1170AE2240AACC00E3CE8E /* SweetAlert.swift in Sources */,
 				ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */,
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
 				EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */,

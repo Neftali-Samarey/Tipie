@@ -11,6 +11,7 @@
 import UIKit
 
 enum TipPercentage : Float {
+    
     case Fiften = 0.15
     case Twenty = 0.20
     case TwentyFive = 0.25
@@ -19,7 +20,7 @@ enum TipPercentage : Float {
 class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideThroughDelegate {
     
     
-
+    var customSegmentControlView = HoverView()
     var typeSlider : Slider?
     var sliderTipIsActive : Bool?
     let roundingDefaults = UserDefaults.standard
@@ -43,6 +44,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     @IBOutlet weak var dueParentView: UIView!
     @IBOutlet weak var tipParentView: UIView!
     @IBOutlet weak var totalParentView: UIView!
+    @IBOutlet weak var segmentControlParentView: UIView!
     
    
     
@@ -88,57 +90,70 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     var bottomTotalLabelConstrain : NSLayoutConstraint?
     var bottomTitledTotalLabelConstraint : NSLayoutConstraint?
     
+    var userSelectedZero : Bool!
+    
     // COMPUTING BASED ON INPUT
     @IBAction func actionKey(_ sender: UIButton) {
+        
+    
         
         selectedFeedbackGenerator.impactOccurred()
         
         self.tipSegmentControl.isEnabled = true
         self.splitButton.isEnabled = true
         
-        // Remove the 0 during initial presentation
+        // Testing to check
+        if displayQuantity == 0 {
+            userSelectedZero = true
+            if let didSetZero = userSelectedZero {
+                print("Zero: \(didSetZero)")
+            }
+        }
+        
+        
+        // Removes the 0 during initial presentation
         if let slateClean = cleanSlate {
             if slateClean == false {
                 self.dueLabel.text = ""
             }
         }
-        
+    
         cleanSlate = true
-        
+     
         self.dueLabel.text! = self.dueLabel.text! + String(sender.tag-1)
-        print("Label Test: \(String(describing: self.appendExtranousCharacter(label: dueLabel!)))") // test
+       // print("Label Test: \(String(describing: self.appendExtranousCharacter(label: dueLabel!)))") // test
         displayQuantity = Float(self.dueLabel.text!)!
         
-        //FIXME: - PROPOSED SOLUTION
-        /*
-         
-        self.recievingInputString = self.recievingInputString + String(sender.tag-1)
-        displayQuantity = Float(self.recievingInputString)!
-        print("Display QTY: \(displayQuantity)")
- 
-        */
-     
-        
-        // Hiding this label
-//        self.dueLabel.isHidden = true
-        
-        // Set the dynamic label in place
-//        let defLabel = appendExtranousCharacter(label: dueLabel!)
-//        defLabel.frame = CGRect(x: 10, y: 10, width: 320, height: 30)
-//       self.totalParentView.addSubview(defLabel)
-        
-        print("Zero: \(displayQuantity)")
+       // print("Zero: \(displayQuantity)")
        
-        tip = displayQuantity * TipPercentage.Fiften.rawValue
-        total = displayQuantity + tip
+        // Also handling rounding mechanism here
+        if let userToggledRounding = tipRoundingAvailable {
+            if userToggledRounding {
+                tip = displayQuantity * TipPercentage.Fiften.rawValue
+                total = displayQuantity + tip
+                self.tipLabel.text = String(format: "$%0.2f",tip.rounded())
+                self.totalLabel.text = String(format: "$%0.2f",total.rounded())
+            } else {
+                tip = displayQuantity * TipPercentage.Fiften.rawValue
+                total = displayQuantity + tip
+                self.tipLabel.text = String(format: "$%0.2f",tip)
+                self.totalLabel.text = String(format: "$%0.2f",total)
+            }
+        }
         
+
 //        if let didCleanSlate = cleanSlate {
-//           // print("Resporting: \(didCleanSlate)")
+//           // print("Reporting: \(didCleanSlate)")
 //        }
        
-        self.tipLabel.text = String(format: "$%0.2f",tip)
-        self.totalLabel.text = String(format: "$%0.2f",total)
+        
     }
+    
+    
+    fileprivate func revokeZeroInputCharacter() {
+        
+    }
+    
     
     // MARK: - Helper function to convert the string to desired label
     func appendExtranousCharacter(label: UILabel?) -> UILabel {
@@ -163,7 +178,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
 
         if decimalCounter == 0 {
             self.dueLabel.text = self.dueLabel.text! + decimalChar[sender.tag-1]!
-           // self.recievingInputString = self.recievingInputString + decimalChar[sender.tag-1]! // MARK : - TEST (to be removed)
         }
         
         // Increment the counter
@@ -190,7 +204,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     }
     
     
-    // MARK: - Styling and constraining the Segmented control
+    // MARK: - SEGMENT CONTROL (Styling & constraints)
     fileprivate func loadCustomSegmentControl() {
         
         tipSegmentControl.translatesAutoresizingMaskIntoConstraints = false
@@ -200,34 +214,43 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         // Style the segment control
         tipSegmentControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 20)!,
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray
+            NSAttributedString.Key.foregroundColor: UIColor.white
             ], for: .normal)
         
         tipSegmentControl.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont(name: "Lato-Semibold", size: 20)!,
-            NSAttributedString.Key.foregroundColor: UIColor.cleanIndigo()
+            NSAttributedString.Key.foregroundColor: UIColor.white
             ], for: .selected)
   
         tipSegmentControl.apportionsSegmentWidthsByContent = true
+        navigatorBar.translatesAutoresizingMaskIntoConstraints = false
+        
         // Segment control anchors (tipSegmentParentView)
         tipSegmentControl.topAnchor.constraint(equalTo: self.tipSegmentParentView.topAnchor, constant: 10).isActive = true
         tipSegmentControl.bottomAnchor.constraint(equalTo: self.tipSegmentParentView.bottomAnchor, constant: -10).isActive = true
         tipSegmentControl.leadingAnchor.constraint(equalTo: self.tipSegmentParentView.leadingAnchor, constant: 3).isActive = true
         tipSegmentControl.trailingAnchor.constraint(equalTo: self.tipSegmentParentView.trailingAnchor, constant: -3).isActive = true
         
-        // Segment control bottom view
-      
-        navigatorBar.translatesAutoresizingMaskIntoConstraints = false
-        self.tipSegmentParentView.addSubview(navigatorBar)
-        navigatorBar.heightAnchor.constraint(equalToConstant: 4).isActive = true
-        //navigatorBar.widthAnchor.constraint(equalTo: tipSegmentControl.widthAnchor, multiplier: 1 / CGFloat(tipSegmentControl.numberOfSegments)).isActive = true
+        
+        tipSegmentParentView.insertSubview(navigatorBar, belowSubview: tipSegmentControl)
+        
+        // SEGMENT CONTROL BACKGROUND ANIMATION SLIDER
+        
+        navigatorBar.topAnchor.constraint(equalTo: self.tipSegmentParentView.topAnchor, constant: 0).isActive = true
+        //navigatorBar.heightAnchor.constraint(equalToConstant: self.tipSegmentParentView.bounds.height).isActive = true
         navigatorBar.widthAnchor.constraint(equalToConstant: self.tipSegmentParentView.bounds.width/4).isActive = true
+        //self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2
+       
+        navigatorBar.clipsToBounds = true
+        self.navigatorBar.layer.masksToBounds = false;
+
         tipSegmentParentView.bottomAnchor.constraint(equalTo: navigatorBar.bottomAnchor).isActive = true
-//        navigatorBar.frame = CGRect(x: 0, y: 0, width: 100, height: 10)
-        navigatorBar.backgroundColor = UIColor.cleanIndigo()
+        navigatorBar.backgroundColor = UIColor.PinkOverlay()
        
         
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -239,14 +262,17 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         super.viewDidLoad()
         
         self.title = "Tipie"
+        
+        userSelectedZero = false
         // Notification Observer
         NotificationCenter.default.addObserver(self, selector: #selector(self.userChoseRounding(_:)),name: NSNotification.Name(rawValue: notificationKey),object: nil)
        
         self.cleanSlate = false
         self.splitButton.isEnabled = false
+        
         loadCustomSegmentControl()
         hideSplitSublabels()
-       
+       styleTipControllerContainer()
         iniiateConstraintReferences()
         // Keyboard Inits
         for buttonLabels in keyboardOutlets {
@@ -255,12 +281,13 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
         // Dynamic labels
 //        self.dueLabel.font = dueLabel.font.withSize(self.view.frame.height * relativeFontConstant)
-//        self.tipLabel.font = tipLabel.font.withSize(self.view.fra`me.height * relativeFontConstant)
+//        self.tipLabel.font = tipLabel.font.withSize(self.view.frame.height * relativeFontConstant)
 //        self.totalLabel.font = totalLabel.font.withSize(self.view.frame.height * relativeFontConstant)
+        
+        
         
         // Static labels
        
-        
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
@@ -271,11 +298,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         selectedFeedbackGenerator.prepare()
         self.tipSegmentControl.isEnabled = false
         self.overlayTouchArea.translatesAutoresizingMaskIntoConstraints = false
-        
-       
-      
-        //FIXME: REMOVE()
-        //layoutLabelBorderLines()
     }
     
     func loadSavedRoundingPreferences() {
@@ -292,6 +314,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     
     func iniiateConstraintReferences() {
         // Set all init lables to false for the default constraints
+        self.tipSegmentControl.isHidden = false // TODO: - UNHIDE SEGMENT CONTROL
         
         dueIconReference.translatesAutoresizingMaskIntoConstraints = false
         tipIconReference.translatesAutoresizingMaskIntoConstraints = false
@@ -333,8 +356,11 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         totalLabel.topAnchor.constraint(equalTo: self.totalParentView.topAnchor, constant: 10).isActive = true
         totalLabel.trailingAnchor.constraint(equalTo: self.totalParentView.trailingAnchor, constant: -10).isActive = true
         totalLabel.leadingAnchor.constraint(equalTo: self.titledTotalLabel.trailingAnchor, constant: 0).isActive = true
-        totalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
-        
+       // totalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
+      
+     
+//        totalLabel.layer.borderWidth = 1
+//        titledTotalLabel.layer.borderWidth = 1
         /****  MARK: DUE DYNAMIC CONSTRAINTS ****/
         titledTipLabel.translatesAutoresizingMaskIntoConstraints = false
        
@@ -360,6 +386,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
         /****  MARK: TOTAL DYNAMIC CONSTRAINTS ****/
          titledTotalLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         // Total label title only**
         bottomTitledTotalLabelConstraint = titledTotalLabel.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10)
         titledTotalLabel.topAnchor.constraint(equalTo: self.totalParentView.topAnchor, constant: 10).isActive = true
@@ -376,6 +403,30 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         bottomTipLabelConstrain?.isActive = true // Pins the tip label 10 points from the parent bottom
         bottomTitledTipLabelConstrain?.isActive = true
     }
+    
+    func styleTipControllerContainer() {
+        
+        self.segmentControlParentView.backgroundColor = UIColor.TipiePink()
+    }
+    
+  
+    // MARK: - CUSTOM SEGMENTED CONTROL PROGRAMMATICALLY
+//     func initiateCustomSegmentControl() {
+//
+//        customSegmentControlView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // Custom
+//
+//
+//        segmentControlParentView.addSubview(customSegmentControlView)
+//
+//            // Constraints
+//
+//            customSegmentControlView.topAnchor.constraint(equalTo: self.segmentControlParentView.topAnchor, constant: 0).isActive = true
+//            customSegmentControlView.bottomAnchor.constraint(equalTo: self.segmentControlParentView.bottomAnchor, constant: 0).isActive = true
+//            customSegmentControlView.leadingAnchor.constraint(equalTo: self.segmentControlParentView.leadingAnchor, constant: 0).isActive = true
+//            customSegmentControlView.trailingAnchor.constraint(equalTo: self.segmentControlParentView.trailingAnchor, constant: 0).isActive = true
+//    }
     
     
     
@@ -407,7 +458,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 self.yourTotalValue.bottomAnchor.constraint(equalTo: self.totalParentView.bottomAnchor, constant: -10).isActive = true
             }
         } else if count < 2{
-            print("Disabling them")
+            //print("Disabling them")
             self.yourTipLabel.leadingAnchor.constraint(equalTo: self.tipIconReference.trailingAnchor, constant: 0).isActive = false
             self.yourTipLabel.bottomAnchor.constraint(equalTo: self.tipParentView.bottomAnchor, constant: -10).isActive = false
             self.yourTipLabel.topAnchor.constraint(equalTo: self.tipLabel.bottomAnchor, constant: 0).isActive = false
@@ -434,13 +485,15 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         
         // Update the Bottom bar
         UIView.animate(withDuration: 0.2) {
-            //buttonBar.frame.origin.x = (segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments)) * CGFloat(segmentedControl.selectedSegmentIndex)
+            
             self.navigatorBar.frame.origin.x = (self.tipSegmentParentView.frame.width / CGFloat(self.tipSegmentControl.numberOfSegments)) * CGFloat(self.tipSegmentControl.selectedSegmentIndex)
         }
         
         guard displayQuantity != 0.0 else {
             return
         }
+        
+       
         
         switch tipSegmentControl.selectedSegmentIndex {
         case 0:
@@ -461,9 +514,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
 
         case 3:
             slideCustomViewWithType(type: .Tip)
-           // sliderCustomView()
+           
         default:
-            print("No other selection made")
+           return
         }
     }
     
@@ -490,29 +543,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
             computeCustomTip(input: roundedValue)
         }
     }
-    
-    func layoutLabelBorderLines() {
-        
-//        // Due section
-//        self.dueLabel.layer.borderWidth = 1
-//        self.titledDueLabel.layer.borderWidth = 1
-        
-        
-//        // Tip section
-//        self.titledTipLabel.layer.borderWidth = 1
-//        self.tipLabel.layer.borderWidth = 1
-//        self.yourTipLabel.layer.borderWidth = 1
-//        self.yourTipValueLabel.layer.borderWidth = 1
-//        self.tipIconReference.layer.borderWidth = 1
-        
-        // total section
-        
-        self.totalIconReference.layer.borderWidth = 1
-        self.titledTotalLabel.layer.borderWidth = 1
-        self.totalLabel.layer.borderWidth = 1
-        
-    }
-    
+
+
     // MARK: - ROUNDING NOTIFICATION METHOD
     @objc func userChoseRounding(_ notification:Notification) {
         
@@ -530,7 +562,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     func updateNumberOfPeopleSplit(count: Int?) {
         
         // Without affecting the global amount due, I am using local variables to compute the tip
-        let splitTotalAmount = total
+        let splitTotalAmount = displayQuantity
         let splitTipAmount = tip
         
         if let amount = count {
@@ -562,24 +594,18 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 let tipYouGive = splitTipAmount/Float(amount)
                 let totalSplit = splitTotalAmount/Float(amount)
                 let grandTotalDueByPerson = tipYouGive + totalSplit
+                
                 // Check to see user toggled rounded option. if so, round the tip
                 if let roundedBoolean = tipRoundingAvailable {
                     
-                    // Animation for the tip, tip text label, and total text labels
-//                    UIView.animate(withDuration: 0.3) {
-//
-//                        self.tipLabel.textColor = UIColor.lightGray
-//                        self.titledTipLabel.textColor = UIColor.lightGray
-//                        self.titledTotalLabel.textColor = UIColor.lightGray
-//                        self.totalLabel.textColor = UIColor.lightGray
-//                    }
-                    
                     if (roundedBoolean) {
                       
+                        // Hidden split labels
                         yourTipValueLabel.text = String(format: "$%0.2f", tipYouGive.rounded())
                         yourTotalValue.text = String(format: "$%0.2f", grandTotalDueByPerson.rounded())
                         
                     } else {
+                        // Hidden split label
                          yourTipValueLabel.text = String(format: "$%0.2f", tipYouGive)
                          yourTotalValue.text = String(format: "$%0.2f", grandTotalDueByPerson)
                     }
@@ -625,7 +651,6 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
                 }
             }
             layoutInPlace = true
-          
         }
      
     }
@@ -644,18 +669,29 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     }
 
     
-    // MARK: - ANIMATION
+    // MARK: - ANIMATION & TIP ROUNDING HANDLING METHOD
     fileprivate func animateLabelsWith(tip: Float, total: Float) {
         
-        let roundedValueTip = (tip * 100).rounded() / 100
-        let roundedTotal = (total * 100).rounded() / 100
-//        print("Tip: \(roundedValueTip)\n Total: \(roundedTotal)")
-        UIView.animate(withDuration: 0.2) {
-            
-            self.tipLabel.text = String(format: "$%0.2f", roundedValueTip)
-            self.totalLabel.text = String(format: "$%0.2f", roundedTotal)
+        // Toggled rounding
+        if let roundedBoolean = tipRoundingAvailable {
+            if (roundedBoolean) {
+                let userDefinedRoundingTip = tip
+                let userDefinedRoundingTotal = total
+                UIView.animate(withDuration: 0.2) {
+                    self.tipLabel.text = String(format: "$%0.2f", userDefinedRoundingTip.rounded())
+                    self.totalLabel.text = String(format: "$%0.2f", userDefinedRoundingTotal.rounded())
+                }
+            } else {
+                // This is only handled if the user has not toggled 'rounding' in settings
+                let localUnroundedValueTip = (tip * 100).rounded() / 100
+                let localUnroundedTotal = (total * 100).rounded() / 100
+                UIView.animate(withDuration: 0.2) {
+                    self.tipLabel.text = String(format: "$%0.2f", localUnroundedValueTip)
+                    self.totalLabel.text = String(format: "$%0.2f", localUnroundedTotal)
+                }
+            }
         }
-        
+
     }
     
     
@@ -664,10 +700,12 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     
     func slideCustomViewWithType(type: SliderType) {
       
+     // Determine the type of slider that will be invoked in this segment
         
         typeSlider = Slider(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
         typeSlider?.translatesAutoresizingMaskIntoConstraints = false
         if let slider = typeSlider {
+            splitButtonReference.isEnabled = false // MARK: - IF ERROR, LOOK HERE
             slider.style(slidertype: type)
             view.addSubview(slider)
             view.addSubview(overlayTouchArea)
@@ -678,6 +716,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
             overlayTouchArea.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
             overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
             invokeTouchArea()
+            
+            
+            
             // FIXME: - Fixing the view to end at the bottom of the total view bottom
             // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
             self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
@@ -691,35 +732,7 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         }
     }
     
-    
-    
-//     func sliderCustomView() {
-//
-//        slider = Overlay(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3))
-//        slider?.translatesAutoresizingMaskIntoConstraints = false
-//        if let slider = slider {
-//            view.addSubview(slider)
-//            view.addSubview(overlayTouchArea)
-//            slider.delegate = self
-//            // Touch area
-//            overlayTouchArea.backgroundColor = UIColor.clear
-//            overlayTouchArea.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
-//            overlayTouchArea.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-//            overlayTouchArea.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
-//            invokeTouchArea()
-//            // FIXME: - Fixing the view to end at the bottom of the total view bottom
-//           // slider.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.height/2) + 60).isActive = true
-//            self.tipSegmentParentView.topAnchor.constraint(equalTo: slider.topAnchor, constant: 0).isActive = true
-//            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-//            slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-//
-//            UIView.animate(withDuration: 0.2, animations: {
-//                self.view.layoutIfNeeded()
-//            })
-//            // end
-//        }
-//    }
-    
+
     // Remove from the main view
     @objc func slideViewDown() {
 
@@ -747,6 +760,8 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
             
         }
         splitButtonReference.isEnabled = true
+        
+        
        
     }
     
