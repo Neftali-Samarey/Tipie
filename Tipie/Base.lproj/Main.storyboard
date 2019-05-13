@@ -50,7 +50,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="eQD-mP-01J">
-                            <rect key="frame" x="0.0" y="717.33333333333337" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="673.33333333333337" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made with ❤️ in NYC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-Hh-Ws5">
@@ -150,7 +150,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzP-Ob-KXf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzP-Ob-KXf">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="44.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="X2o-SF-0dR"/>
@@ -221,29 +221,7 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="lSw-Wv-FJY">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shareCell" id="2A4-LG-Loh">
-                                        <rect key="frame" x="0.0" y="655.33333333333337" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2A4-LG-Loh" id="Nsi-hF-ikN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share Tipie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Sq-dY-8Qa">
-                                                    <rect key="frame" x="52" y="5" width="300" height="35"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="19"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShareIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Cg6-on-HlS">
-                                                    <rect key="frame" x="16" y="5" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
+                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
@@ -267,9 +245,6 @@
                         <outlet property="rateCell" destination="fpR-f5-qd2" id="AqD-U6-CJ9"/>
                         <outlet property="rateImageIcon" destination="t6s-NA-jPW" id="A5W-B2-L6o"/>
                         <outlet property="rateTipieLabel" destination="58J-lv-v1u" id="1Qv-vA-5qY"/>
-                        <outlet property="shareCell" destination="2A4-LG-Loh" id="soy-CO-TvP"/>
-                        <outlet property="shareImageIcon" destination="Cg6-on-HlS" id="oEq-jJ-eP1"/>
-                        <outlet property="shareLabel" destination="9Sq-dY-8Qa" id="BbT-Bh-eWV"/>
                         <outlet property="toggleRoundingReference" destination="UTh-Qc-QF6" id="dC0-ZQ-gS3"/>
                     </connections>
                 </tableViewController>
@@ -717,7 +692,6 @@
         <image name="Bill" width="154.28572082519531" height="154.28572082519531"/>
         <image name="FeedbackIcon" width="154.28572082519531" height="154.28572082519531"/>
         <image name="RateApp" width="154.28572082519531" height="154.28572082519531"/>
-        <image name="ShareIcon" width="154.28572082519531" height="154.28572082519531"/>
         <image name="SplitIcon" width="24" height="24"/>
         <image name="Tip" width="30" height="30"/>
         <image name="Total" width="154.28572082519531" height="154.28572082519531"/>

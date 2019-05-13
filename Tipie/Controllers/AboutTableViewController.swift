@@ -141,7 +141,7 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["neftalisamarey@gmail.com"])
-            mail.setMessageBody("<p><br/><br/><br/><br/><br/>Build Version: \(text) </p>", isHTML: true)
+            mail.setMessageBody("<style>body {background-color: #fff;} p {font-family: avenir; line-height: 7px;} </style><p>App: Tipie</p><p>Build Version: \(text)</p><br/><div><span>----- YOUR MESSAGE BELOW -----</span></div><br/><br/>", isHTML: true)
             
             present(mail, animated: true, completion: nil)
         } else {
@@ -171,18 +171,18 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
         // turn em' off
         rateImageIcon.translatesAutoresizingMaskIntoConstraints = false
         feedbackImageIcon.translatesAutoresizingMaskIntoConstraints = false
-        shareImageIcon.translatesAutoresizingMaskIntoConstraints = false
+       
         
         rateTipieLabel.translatesAutoresizingMaskIntoConstraints = false
         feedbackLabel.translatesAutoresizingMaskIntoConstraints = false
-        shareLabel.translatesAutoresizingMaskIntoConstraints = false
+    
         
         // temp
       
         
         rateImageIcon.contentMode = .scaleAspectFit
         feedbackImageIcon.contentMode = .scaleAspectFit
-        shareImageIcon.contentMode = .scaleAspectFit
+      
         // constrain em'
        
         
@@ -214,19 +214,7 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
         feedbackLabel.topAnchor.constraint(equalTo: self.feedbackCell.topAnchor, constant: 5).isActive = true
         feedbackLabel.bottomAnchor.constraint(equalTo: self.feedbackCell.bottomAnchor, constant: -5).isActive = true
         
-        
-        // CELL 3
-        shareImageIcon.leadingAnchor.constraint(equalTo: self.shareCell.leadingAnchor, constant: 5).isActive = true
-        shareImageIcon.trailingAnchor.constraint(equalTo: self.shareLabel.leadingAnchor, constant: 5).isActive = true
-        shareImageIcon.centerYAnchor.constraint(equalTo: shareCell.centerYAnchor, constant: 0).isActive = true
-        shareImageIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        shareImageIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        // LABEL
-        shareLabel.trailingAnchor.constraint(equalTo: self.shareCell.trailingAnchor, constant: -10).isActive = true
-        shareLabel.leadingAnchor.constraint(equalTo: self.shareCell.leadingAnchor, constant: 60).isActive = true
-        shareLabel.topAnchor.constraint(equalTo: self.shareCell.topAnchor, constant: 5).isActive = true
-        shareLabel.bottomAnchor.constraint(equalTo: self.shareCell.bottomAnchor, constant: -5).isActive = true
+      
         
     }
     
