@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented app running on iPhone
 
-<img src='images/tipie_in_action.gif' title='App Walkthrough' width='' alt='App Walkthrough' />
+<img src='images/tipie_in_action.gif' title='App Walkthrough' width='200px' alt='App Walkthrough' />
 
 ## App Store Availability
 
