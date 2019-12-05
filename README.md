@@ -26,12 +26,16 @@ The following **additional** features are implemented:
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented app running on iPhone
-
-<img src='images/tipie_in_action.gif' title='App Walkthrough' width='200px' alt='App Walkthrough' />
+<p align="center">
+<img src='images/tipie_in_action.gif' title='App Walkthrough' width='270px' alt='App Walkthrough' />
+</p>
 
 ## App Store Availability
 
 Yup, its there, go ahead and download now. Its free! 😉
+<p align="center">
+[![button](images/appstore_s.png)](https://apps.apple.com/us/app/tipie/id1454194057)
+</p>
 
 ## Notes
 
