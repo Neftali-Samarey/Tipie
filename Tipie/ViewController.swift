@@ -4,7 +4,7 @@
 //
 //  Created by Neftali Samarey on 1/17/19.
 //  Copyright © 2019 Neftali Samarey. All rights reserved.
-//
+//  Updated to iOS 13 on December 3, 2019
 
 // NOTES: If Percentage is selected before input is made, 0 index value will be calculated first.
 
