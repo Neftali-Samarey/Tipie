@@ -19,7 +19,6 @@
 		ED3D391121F18F5900C68323 /* Tippin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D391021F18F5900C68323 /* Tippin_Tests.swift */; };
 		ED3D391C21F18F5900C68323 /* Tippin_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D391B21F18F5900C68323 /* Tippin_UITests.swift */; };
 		ED3D392B21F196D100C68323 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D392A21F196C600C68323 /* Lato-Light.ttf */; };
-		ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D392C21F1A7CE00C68323 /* Tip.swift */; };
 		ED3D393021F265EC00C68323 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D392F21F265EC00C68323 /* Slider.swift */; };
 		ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393421F421E100C68323 /* AboutTableViewController.swift */; };
 		ED3D393821F424F900C68323 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393721F424F900C68323 /* UIColors.swift */; };
@@ -63,7 +62,6 @@
 		ED3D391B21F18F5900C68323 /* Tippin_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tippin_UITests.swift; sourceTree = "<group>"; };
 		ED3D391D21F18F5900C68323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED3D392A21F196C600C68323 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		ED3D392C21F1A7CE00C68323 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 		ED3D392F21F265EC00C68323 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		ED3D393421F421E100C68323 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		ED3D393721F424F900C68323 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				ED513B1F221E19B700B452AA /* Helper Views */,
 				ED3D393121F4190100C68323 /* Controllers */,
 				ED3D392E21F265D300C68323 /* Slider */,
-				ED3D392C21F1A7CE00C68323 /* Tip.swift */,
 				ED3D393621F424D800C68323 /* Helpers */,
 				ED3D38FF21F18F5700C68323 /* Main.storyboard */,
 				ED3D390221F18F5800C68323 /* Assets.xcassets */,
@@ -334,7 +331,6 @@
 			files = (
 				ED3C187D222F2D5900D5D00D /* HoverView.swift in Sources */,
 				ED1170AE2240AACC00E3CE8E /* SweetAlert.swift in Sources */,
-				ED3D392D21F1A7CE00C68323 /* Tip.swift in Sources */,
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
 				EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */,
 				ED32EDD1222438C200A183C3 /* FlatStepper.swift in Sources */,
