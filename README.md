@@ -1,6 +1,6 @@
 # Pre-work - *Tipie*
 
-** Tipie** is a tip calculator application for iOS.
+ Tipie is a tip calculator application for iOS.
 
 Submitted by: **Neftali Samarey**
 
@@ -33,9 +33,9 @@ Here's a walkthrough of implemented app running on iPhone
 ## App Store Availability
 
 Yup, its there, go ahead and download now. Its free! 😉
-<p align="center">
-[![button](images/appstore_s.png)](https://apps.apple.com/us/app/tipie/id1454194057)
-</p>
+
+->[![button](images/appstore_s.png)](https://apps.apple.com/us/app/tipie/id1454194057)<-
+
 
 ## Notes
 
