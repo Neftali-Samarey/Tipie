@@ -23,7 +23,7 @@ The following **additional** features are implemented:
 - [ ✅] Clean modern design.
 - [ ✅] Split bill among friends/group of people.
 
-## Video Walkthrough 
+## App Walkthrough 
 
 Here's a walkthrough of implemented app running on iPhone
 <p align="center">
@@ -34,7 +34,7 @@ Here's a walkthrough of implemented app running on iPhone
 
 Yup, its there, go ahead and download now. Its free! 😉
 
-->[![button](images/appstore_s.png)](https://apps.apple.com/us/app/tipie/id1454194057)<-
+[![button](images/appstore_s.png)](https://apps.apple.com/us/app/tipie/id1454194057)
 
 
 ## Notes
