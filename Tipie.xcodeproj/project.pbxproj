@@ -120,6 +120,7 @@
 				ED3D38FB21F18F5700C68323 /* AppDelegate.swift */,
 				ED3D38FD21F18F5700C68323 /* ViewController.swift */,
 				ED3C187C222F2D5900D5D00D /* HoverView.swift */,
+				ED63EDC52517F03C0057EDD2 /* Controls */,
 				ED513B1F221E19B700B452AA /* Helper Views */,
 				ED3D393121F4190100C68323 /* Controllers */,
 				ED3D392E21F265D300C68323 /* Slider */,
@@ -128,7 +129,7 @@
 				ED3D390221F18F5800C68323 /* Assets.xcassets */,
 				ED3D390421F18F5800C68323 /* LaunchScreen.storyboard */,
 				ED3D390721F18F5800C68323 /* Info.plist */,
-				ED3D392921F196B600C68323 /* Fonts */,
+				ED63EDC72517F0D50057EDD2 /* Resources */,
 			);
 			path = Tipie;
 			sourceTree = "<group>";
@@ -193,6 +194,29 @@
 				ED32EDD0222438C200A183C3 /* FlatStepper.swift */,
 			);
 			path = "Helper Views";
+			sourceTree = "<group>";
+		};
+		ED63EDC52517F03C0057EDD2 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				ED63EDC62517F0470057EDD2 /* Segment */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		ED63EDC62517F0470057EDD2 /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Segment;
+			sourceTree = "<group>";
+		};
+		ED63EDC72517F0D50057EDD2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED3D392921F196B600C68323 /* Fonts */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

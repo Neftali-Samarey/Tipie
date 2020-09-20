@@ -25,6 +25,12 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     var sliderTipIsActive : Bool?
     let roundingDefaults = UserDefaults.standard
     var tipRoundingAvailable: Bool?
+    
+    // Main background (level 0)
+    @IBOutlet var topViewContainer: UIView!
+    
+    // Submain background (level 1)
+    
     // LABELS
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
@@ -260,6 +266,12 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            print("Dark mode")
+        } else {
+            print("Light mode")
+        }
         
         self.title = "Tipie"
         
