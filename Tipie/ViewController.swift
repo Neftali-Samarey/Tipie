@@ -25,6 +25,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     var sliderTipIsActive : Bool?
     let roundingDefaults = UserDefaults.standard
     var tipRoundingAvailable: Bool?
+
+    // iOS 14 Segment
+    var percentageSegmentControl: NefSegmentControl?
     
     // Main background (level 0)
     @IBOutlet var topViewContainer: UIView!
@@ -262,11 +265,33 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         super.viewWillAppear(animated)
          loadSavedRoundingPreferences()
     }
+
+    func setupCustomSegmentControl() {
+
+        percentageSegmentControl = NefSegmentControl(frame: .zero)
+        percentageSegmentControl?.translatesAutoresizingMaskIntoConstraints = false
+        percentageSegmentControl?.setSegmentIndexes(with: ["15%", "18%", "20%", "Enter"])
+
+        guard let segment = percentageSegmentControl else {
+            return
+        }
+
+        //segment.frame = CGRect(x: 10, y: 10, width: 320, height: 100)
+
+        segmentControlParentView.addSubview(segment)
+
+        // Constraint the element
+
+        segment.centerYAnchor.constraint(equalTo: segmentControlParentView.centerYAnchor, constant: 0).isActive = true
+        segment.centerXAnchor.constraint(equalTo: segmentControlParentView.centerXAnchor, constant: 0).isActive = true
+        segment.heightAnchor.constraint(equalToConstant: segmentControlParentView.bounds.height).isActive = true
+        segment.widthAnchor.constraint(equalToConstant: segmentControlParentView.bounds.width).isActive = true
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if self.traitCollection.userInterfaceStyle == .dark {
             print("Dark mode")
         } else {
@@ -282,29 +307,22 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
         self.cleanSlate = false
         self.splitButton.isEnabled = false
         
-        loadCustomSegmentControl()
+        //loadCustomSegmentControl()
+        setupCustomSegmentControl()
         hideSplitSublabels()
-       styleTipControllerContainer()
+        //styleTipControllerContainer()
         iniiateConstraintReferences()
         // Keyboard Inits
         for buttonLabels in keyboardOutlets {
          buttonLabels.titleLabel?.font = buttonLabels.titleLabel?.font.withSize(self.view.frame.height * relativeFontConstant)
         }
-        
-        // Dynamic labels
-//        self.dueLabel.font = dueLabel.font.withSize(self.view.frame.height * relativeFontConstant)
-//        self.tipLabel.font = tipLabel.font.withSize(self.view.frame.height * relativeFontConstant)
-//        self.totalLabel.font = totalLabel.font.withSize(self.view.frame.height * relativeFontConstant)
-        
-        
-        
+
         // Static labels
        
         let attributes = [
             NSAttributedString.Key.foregroundColor : UIColor.black,
             NSAttributedString.Key.font : UIFont(name: "Lato-Light", size: 24)!
         ]
-        
 
         navigationController?.navigationBar.titleTextAttributes = attributes
         selectedFeedbackGenerator.prepare()
@@ -417,28 +435,9 @@ class ViewController: UIViewController, SliderPercentageInputDelegate, didSlideT
     }
     
     func styleTipControllerContainer() {
-        
         self.segmentControlParentView.backgroundColor = UIColor.TipiePink()
     }
-    
-  
-    // MARK: - CUSTOM SEGMENTED CONTROL PROGRAMMATICALLY
-//     func initiateCustomSegmentControl() {
-//
-//        customSegmentControlView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        // Custom
-//
-//
-//        segmentControlParentView.addSubview(customSegmentControlView)
-//
-//            // Constraints
-//
-//            customSegmentControlView.topAnchor.constraint(equalTo: self.segmentControlParentView.topAnchor, constant: 0).isActive = true
-//            customSegmentControlView.bottomAnchor.constraint(equalTo: self.segmentControlParentView.bottomAnchor, constant: 0).isActive = true
-//            customSegmentControlView.leadingAnchor.constraint(equalTo: self.segmentControlParentView.leadingAnchor, constant: 0).isActive = true
-//            customSegmentControlView.trailingAnchor.constraint(equalTo: self.segmentControlParentView.trailingAnchor, constant: 0).isActive = true
-//    }
+
     
     
     

@@ -23,6 +23,8 @@
 		ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393421F421E100C68323 /* AboutTableViewController.swift */; };
 		ED3D393821F424F900C68323 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393721F424F900C68323 /* UIColors.swift */; };
 		ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D395721F5418800C68323 /* Lato-Semibold.ttf */; };
+		ED63EDC92518507D0057EDD2 /* NefSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */; };
+		ED63EDCC25187C5F0057EDD2 /* UILabels+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */; };
 		EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE2855E21F6D5870051EDEA /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		ED3D393421F421E100C68323 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		ED3D393721F424F900C68323 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		ED3D395721F5418800C68323 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefSegmentControl.swift; sourceTree = "<group>"; };
+		ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabels+Extensions.swift"; sourceTree = "<group>"; };
 		EDE2855E21F6D5870051EDEA /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +188,7 @@
 			children = (
 				ED1170AD2240AACC00E3CE8E /* SweetAlert.swift */,
 				ED3D393721F424F900C68323 /* UIColors.swift */,
+				ED63EDCA25187C460057EDD2 /* Extensions */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 		ED63EDC62517F0470057EDD2 /* Segment */ = {
 			isa = PBXGroup;
 			children = (
+				ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -217,6 +223,14 @@
 				ED3D392921F196B600C68323 /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED63EDCA25187C460057EDD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,8 +372,10 @@
 				ED3D38FE21F18F5700C68323 /* ViewController.swift in Sources */,
 				EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */,
 				ED32EDD1222438C200A183C3 /* FlatStepper.swift in Sources */,
+				ED63EDCC25187C5F0057EDD2 /* UILabels+Extensions.swift in Sources */,
 				ED3D393021F265EC00C68323 /* Slider.swift in Sources */,
 				ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */,
+				ED63EDC92518507D0057EDD2 /* NefSegmentControl.swift in Sources */,
 				ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */,
 				ED3D393821F424F900C68323 /* UIColors.swift in Sources */,
 			);
