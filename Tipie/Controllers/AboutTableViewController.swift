@@ -114,7 +114,6 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
     
     fileprivate func rateTipie() {
         rateApp(appId: "1454194057") { success in
-            print("RateApp \(success)")
         }
     }
     
