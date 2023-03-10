@@ -13,19 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-//        UIApplication.shared.statusBarStyle = .lightContent
-        // Override point for customization after application launch.
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             if shortcutItem.type == "ReactorApps.Tipie.share" {
-                // shortcut was triggered!
-                print("Triggered")
+                // empty for now
             }
         }
-        
-        
         return true
     }
 
