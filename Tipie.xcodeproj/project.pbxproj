@@ -23,8 +23,9 @@
 		ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393421F421E100C68323 /* AboutTableViewController.swift */; };
 		ED3D393821F424F900C68323 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D393721F424F900C68323 /* UIColors.swift */; };
 		ED3D395821F5418900C68323 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED3D395721F5418800C68323 /* Lato-Semibold.ttf */; };
-		ED63EDC92518507D0057EDD2 /* NefSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */; };
+		ED63EDC92518507D0057EDD2 /* NEFSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63EDC82518507D0057EDD2 /* NEFSegmentControl.swift */; };
 		ED63EDCC25187C5F0057EDD2 /* UILabels+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */; };
+		ED9DF1CF29BAC197000ACA35 /* TipieMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9DF1CE29BAC197000ACA35 /* TipieMainViewController.swift */; };
 		EDE2855F21F6D5870051EDEA /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE2855E21F6D5870051EDEA /* OverlayView.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,8 +69,9 @@
 		ED3D393421F421E100C68323 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		ED3D393721F424F900C68323 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		ED3D395721F5418800C68323 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
-		ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefSegmentControl.swift; sourceTree = "<group>"; };
+		ED63EDC82518507D0057EDD2 /* NEFSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEFSegmentControl.swift; sourceTree = "<group>"; };
 		ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabels+Extensions.swift"; sourceTree = "<group>"; };
+		ED9DF1CE29BAC197000ACA35 /* TipieMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipieMainViewController.swift; sourceTree = "<group>"; };
 		EDE2855E21F6D5870051EDEA /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 				ED3D38FB21F18F5700C68323 /* AppDelegate.swift */,
 				ED3D38FD21F18F5700C68323 /* ViewController.swift */,
 				ED3C187C222F2D5900D5D00D /* HoverView.swift */,
+				ED9DF1CD29BAC171000ACA35 /* Interface */,
 				ED63EDC52517F03C0057EDD2 /* Controls */,
 				ED513B1F221E19B700B452AA /* Helper Views */,
 				ED3D393121F4190100C68323 /* Controllers */,
@@ -212,7 +215,7 @@
 		ED63EDC62517F0470057EDD2 /* Segment */ = {
 			isa = PBXGroup;
 			children = (
-				ED63EDC82518507D0057EDD2 /* NefSegmentControl.swift */,
+				ED63EDC82518507D0057EDD2 /* NEFSegmentControl.swift */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -231,6 +234,14 @@
 				ED63EDCB25187C5F0057EDD2 /* UILabels+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ED9DF1CD29BAC171000ACA35 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				ED9DF1CE29BAC197000ACA35 /* TipieMainViewController.swift */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,9 +386,10 @@
 				ED63EDCC25187C5F0057EDD2 /* UILabels+Extensions.swift in Sources */,
 				ED3D393021F265EC00C68323 /* Slider.swift in Sources */,
 				ED3D38FC21F18F5700C68323 /* AppDelegate.swift in Sources */,
-				ED63EDC92518507D0057EDD2 /* NefSegmentControl.swift in Sources */,
+				ED63EDC92518507D0057EDD2 /* NEFSegmentControl.swift in Sources */,
 				ED3D393521F421E100C68323 /* AboutTableViewController.swift in Sources */,
 				ED3D393821F424F900C68323 /* UIColors.swift in Sources */,
+				ED9DF1CF29BAC197000ACA35 /* TipieMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,16 +565,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = X752JDEFHP;
 				INFOPLIST_FILE = Tipie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samarey.tipie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -572,16 +587,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_TEAM = X752JDEFHP;
 				INFOPLIST_FILE = Tipie/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samarey.tipie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
